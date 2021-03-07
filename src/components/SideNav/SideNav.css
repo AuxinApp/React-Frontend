@@ -2,5 +2,16 @@
 
 .logo {
     margin-bottom: 32px;
-    height:48px;
+    height:48px;   
 }
+
+.logo:hover {
+    animation: float 3s infinite;
+  
+}
+
+@keyframes float {
+    0% { transform: translate(0,  0px); } 
+    65%  { transform: translate(0, -8px); } 
+    100%   { transform: translate(0, 0px); }     
+  }

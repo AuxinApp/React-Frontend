@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { BaseProvider, DarkTheme } from "baseui";
 import { Provider as StyletronProvider } from "styletron-react";
 import { Client as Styletron } from "styletron-engine-atomic";
+import auxinTheme from './theme'
 
 const engine = new Styletron();
 
@@ -20,7 +21,7 @@ ReactDOM.render(
   > */}
     <BrowserRouter>
       <StyletronProvider value={engine}>
-        <BaseProvider theme={DarkTheme}>
+        <BaseProvider theme={auxinTheme}>
           <App />
         </BaseProvider>
       </StyletronProvider>
