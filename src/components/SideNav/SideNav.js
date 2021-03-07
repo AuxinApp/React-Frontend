@@ -3,6 +3,9 @@ import { Navigation } from "baseui/side-navigation";
 import {withRouter} from 'react-router';
 import "./SideNav.css"
 import auxinLogo from "../../media/Auxin.png";
+import {
+  Link
+} from "react-router-dom"
 
 const SideNav = ({history,location}) => {
   const [activeItemId, setActiveItemId] = React.useState(
@@ -17,7 +20,8 @@ const SideNav = ({history,location}) => {
   }
   return (
     <div>
-        <img className='logo' src={auxinLogo}></img>
+        <Link to="/"><img className='logo' src={auxinLogo}></img></Link>
+        
     <Navigation
       items={[
         {
