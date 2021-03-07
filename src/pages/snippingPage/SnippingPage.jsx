@@ -7,7 +7,6 @@ import { sliceAudioBuffer } from './audio-helper'
 import { encode } from './worker-client'
 import WebAudio from './webaudio'
 
-
 import './SnippingPage.css'
 
 
@@ -157,21 +156,21 @@ class SnippingPage extends Component {
               <div className='controllers'>
                 <FilePicker onChange={this.handleFileChange}>
                   <div className='ctrl-item' title='Reselect File'>
-                    <Icon name='music' />
+                    Upload
                   </div>
                 </FilePicker>
 
                 <a className='ctrl-item' title='Play/Pause' onClick={this.handlePlayPauseClick}>
-                  <Icon name={this.state.paused ? 'play' : 'pause'} />
+                  Play/Pause
                 </a>
 
                 <a className='ctrl-item' title='Replay' onClick={this.handleReplayClick}>
-                  <Icon name='replay' />
+                  Replay
                 </a>
 
                 <div className='dropdown list-wrap'>
                   <a className='ctrl-item'>
-                    <Icon name={this.state.processing ? 'spin' : 'download'} />
+                    Download
                   </a>
                   {
                     !this.state.processing && (
@@ -201,10 +200,9 @@ class SnippingPage extends Component {
             </div>
           ) : (
             <div className='landing'>
-              <h2>Audio Cutter</h2>
+              <h2>Create clips</h2>
               <FilePicker onChange={this.handleFileChange}>
                 <div className='file-main'>
-                  <Icon name='music' />
                   Select music file
                 </div>
               </FilePicker>
