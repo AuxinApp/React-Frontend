@@ -1,29 +1,27 @@
-import Authenticate from './Authenticate.js'
-import Post from './Post.js'
-import './App.css';
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
-import logo from "./media/logo.png"
-import LoginButton from "./LoginButton.js"
+import Authenticate from "./pages/authenticate/Authenticate";
+import Post from "./pages/post/Post";
+import SnippingPage from "./pages/snippingPage/SnippingPage";
+import Home from "./pages/home/Home";
+import "./App.css";
+import { Switch, Route } from "react-router-dom";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
+import logo from "./media/logo.png";
+import LoginButton from "./LoginButton.js";
+import SideNav from "./components/SideNav/SideNav";
 
 function App() {
   return (
     <div className="App">
-      <br/>
-      <img src={logo} alt="logo"></img>
-      <br/><br/>
-      <Tabs defaultActiveKey="authenticate" id="uncontrolled-tab-example" pressed>
-        <Tab eventKey="authenticate" title="Authenticate">
-          <Authenticate/>
-        </Tab>
-        <Tab eventKey="post" title="Post">
-          <Post/>
-        </Tab>
-        {/* <Tab eventKey="contact" title="Contact">
-        
-        </Tab> */}
-      </Tabs>
-      
+      <div className='contentWrapper'>
+      <SideNav></SideNav>
+      <Switch>
+        <Route path="/Authenticate" component={Authenticate} />
+        <Route path="/Post" component={Post} />
+        <Route path="/Snipping" component={SnippingPage} />
+        <Route path="/*" component={Home} />
+      </Switch>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import './Authenticate.css';
-import Facebook_Logo_ from "./media/fb.png";
-import insta_Logo_ from "./media/insta.png";
-import linkedin_Logo_ from "./media/linkedin.png";
-import twitter_Logo_ from "./media/twitter.png";
+import Facebook_Logo_ from "../../media/fb.png";
+import insta_Logo_ from "../../media/insta.png";
+import linkedin_Logo_ from "../../media/linkedin.png";
+import twitter_Logo_ from "../../media/twitter.png";
 
 function handleAuth(medium) {
     if (medium === "twitter") {
