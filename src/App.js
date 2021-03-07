@@ -4,10 +4,6 @@ import SnippingPage from "./pages/snippingPage/SnippingPage";
 import Home from "./pages/home/Home";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import Tabs from "react-bootstrap/Tabs";
-import Tab from "react-bootstrap/Tab";
-import logo from "./media/logo.png";
-import LoginButton from "./LoginButton.js";
 import SideNav from "./components/SideNav/SideNav";
 
 function App() {
