@@ -13,6 +13,10 @@ import {
   StyledBody,
   StyledAction
 } from "baseui/card";
+import {
+  Link
+} from "react-router-dom"
+
 
 import './SnippingPage.css'
 
@@ -238,7 +242,19 @@ class SnippingPage extends Component {
              
               </div>
               <div className='controllers'>
-                <Button kind={KIND.secondary} 
+                <Button kind={KIND.secondary}
+                overrides={{
+                  BaseButton: {
+                    style: ({ $theme }) => ({
+                    })
+                  }
+                }}
+                onClick={this.handleSaveClip}>
+              Save clip
+              </Button>
+              <div className='lastButton'>
+              <Link to='/post'>
+              <Button kind={KIND.primary} 
                 overrides={{
                   BaseButton: {
                     style: ({ $theme }) => ({
@@ -246,10 +262,12 @@ class SnippingPage extends Component {
                       backgroundColor: $theme.colors.positive100
                     })
                   }
-                }}
-                onClick={this.handleSaveClip}>
-              Save clip
+                }}>
+              Publish
               </Button>
+              </Link>
+              </div>
+
               </div>
               <div className= "savedContainer">
               {this.state.savedClips && this.state.savedClips.map((item, index) => (
@@ -275,9 +293,9 @@ class SnippingPage extends Component {
                     ref={'player'+index}
                   />
                   <p>
-               {'Start Time: ' + item.startTime}
+               {'Start Time: ' + Math.round(item.startTime * 100) / 100 + " seconds"}
                <br/>
-               { 'End Time: ' + item.endTime}
+               { 'End Time: ' + Math.round(item.endTime * 100) / 100 + " seconds"}
                </p>
                </StyledBody>
                <StyledAction>

@@ -3,7 +3,9 @@
   background-color: #141414;
   color: #e2e2e2;
 }
-
+a {
+  text-decoration: none;
+}
 div {
  padding:0;
 }
