@@ -152,6 +152,10 @@ class SnippingPage extends Component {
     return seconds.toFixed(2) + 's'
   }
 
+  playSavedClipe (index) {
+
+  }
+
 
   render () {
     const { state } = this
@@ -179,6 +183,9 @@ class SnippingPage extends Component {
                     onEndTimeChange={this.handleEndTimeChange}
                     onCurrentTimeChange={this.handleCurrentTimeChange}
                     onSetPaused={this.handlePlayPauseClick}
+                    containerHeight={160}
+                    containerWidth={1000}
+                    smallVersion={false}
                     ref='player'
                   />
                 )
@@ -245,12 +252,33 @@ class SnippingPage extends Component {
               </Button>
               </div>
               <div className= "savedContainer">
-              {this.state.savedClips && this.state.savedClips.map((item) => (
-               <Card>
+              {this.state.savedClips && this.state.savedClips.map((item, index) => (
+
+               <Card 
+               overrides={{
+                Root: {
+                  style: ({ $theme }) => ({
+                    backgroundColor: $theme.colors.backgroundSecondary
+                  })
+                }
+              }}>
                <StyledBody>
+               <Player
+                    audioBuffer={this.state.audioBuffer}
+                    paused={true}
+                    startTime={item.startTime}
+                    endTime={item.endTime}
+                    currentTime={item.startTime}
+                    containerHeight={80}
+                    containerWidth={308}
+                    smallVersion={true}
+                    ref={'player'+index}
+                  />
+                  <p>
                {'Start Time: ' + item.startTime}
                <br/>
                { 'End Time: ' + item.endTime}
+               </p>
                </StyledBody>
                <StyledAction>
                  <Button

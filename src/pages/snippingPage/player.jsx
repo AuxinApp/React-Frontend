@@ -5,18 +5,10 @@ import Dragger from './dragger.jsx'
 import WebAudio from './webaudio'
 import { formatSeconds, leftZero } from './utils.jsx'
 import Color from 'color'
+import classnames from 'classnames'
 
-const containerWidth = 1000
-const containerHeight = 160
 
-function getClipRect (start, end) {
-  return `rect(0, ${end}px, ${containerHeight}px, ${start}px)`
-}
 
-const color1 = '#0cf'
-const color2 = Color(color1).lighten(0.1).toString()
-const gray1 = '#ddd'
-const gray2 = '#e3e3e3'
 
 export default class Player extends PureComponent {
   /**
@@ -31,7 +23,7 @@ export default class Player extends PureComponent {
   audioBuffer = null
 
   get widthDurationRatio () {
-    return containerWidth / this.props.audioBuffer.duration
+    return this.props.containerWidth / this.props.audioBuffer.duration
   }
 
   clean () {
@@ -62,8 +54,8 @@ export default class Player extends PureComponent {
       return 0
     }
 
-    if (x > containerWidth) {
-      return containerWidth
+    if (x > this.props.containerWidth) {
+      return this.props.containerWidth
     }
 
     return x
@@ -161,30 +153,48 @@ export default class Player extends PureComponent {
     )
   }
 
+  
   render () {
     const start = this.time2pos(this.props.startTime)
     const end = this.time2pos(this.props.endTime)
     const current = this.time2pos(this.props.currentTime)
 
+    const playerClass = classnames(
+      'player',
+      {
+        'player_small': this.props.smallVersion,
+      }
+    )
+
+
+function getClipRect (start, end, height) {
+  return `rect(0, ${end}px, ${height}px, ${start}px)`
+}
+
+const color1 = '#0cf'
+const color2 = Color(color1).lighten(0.1).toString()
+const gray1 = '#ddd'
+const gray2 = '#e3e3e3'
+
     return (
-      <div className='player'>
+      <div className={playerClass}>
         <div className='clipper'>
           <Waver
             audioBuffer={this.props.audioBuffer}
-            width={containerWidth}
-            height={containerHeight}
+            width={this.props.containerWidth}
+            height={this.props.containerHeight}
             color1={gray1}
             color2={gray2}
           />
         </div>
         <div
           className='clipper'
-          style={{ clip: getClipRect(start, end) }}
+          style={{ clip: getClipRect(start, end, this.props.containerHeight) }}
         >
           <Waver
             audioBuffer={this.props.audioBuffer}
-            width={containerWidth}
-            height={containerHeight}
+            width={this.props.containerWidth}
+            height={this.props.containerHeight}
             color1={color1}
             color2={color2}
           />
@@ -192,17 +202,20 @@ export default class Player extends PureComponent {
         <Dragger
           x={start}
           onDrag={this.dragStart}
+          smallVersion={this.props.smallVersion}
         />
         <Dragger
           className='drag-current'
           x={current}
           onDrag={this.dragCurrent}
+          smallVersion={this.props.smallVersion}
         >
           {this.renderTimestamp()}
         </Dragger>
         <Dragger
           x={end}
           onDrag={this.dragEnd}
+          smallVersion={this.props.smallVersion}
         />
       </div>
     )
@@ -215,9 +228,11 @@ export default class Player extends PureComponent {
     startTime: PropTypes.number,
     endTime: PropTypes.number,
     currentTime: PropTypes.number,
-
+    containerHeight: PropTypes.number,
+    containerWidth: PropTypes.number,
     onStartTimeChange: PropTypes.func,
     onEndTimeChange: PropTypes.func,
     onCurrentTimeChange: PropTypes.func,
+    smallVersion: PropTypes.bool
   }
 }

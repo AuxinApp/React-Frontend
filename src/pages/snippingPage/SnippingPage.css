@@ -27,6 +27,11 @@
 	background-color: #1F1F1F;
 	box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
 }
+.player_small {
+	height:160px;
+	background-color: #333333;
+
+}
  .player .wave-canvas {
 	 display:flex;
 	 margin-top: auto;
@@ -48,6 +53,10 @@
 	 background: #999;
 	 cursor: col-resize;
 	 height:320px;
+}
+
+.dragger_small {
+	height: 160px;
 }
  .dragger::after {
 	 content: '';
