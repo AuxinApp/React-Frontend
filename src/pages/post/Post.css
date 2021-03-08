@@ -12,3 +12,31 @@
     }
 }
 
+@media (min-width: 992px){
+  .form-container {
+    box-sizing: border-box;
+    position: relative;
+    width: 860px;
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+@media (min-width: 1200px){
+  .form-container {
+    box-sizing: border-box;
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+  }
+
+}
+
+
+@media (min-width: 1400px){
+.form-container {
+  box-sizing: border-box;
+  position: relative;
+  width: 1080px;
+  margin: 0 auto;
+}
+}

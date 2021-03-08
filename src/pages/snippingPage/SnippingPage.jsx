@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import MyVerticallyCenteredModal from "../ModalPage/MyVerticallyCenteredModal"
 
 import "./SnippingPage.css";
-import Post from "../post/Post";
+import PostForm from "./../../components/PostForm/PostForm";
 
 class SnippingPage extends Component {
   constructor() {
@@ -176,8 +176,6 @@ class SnippingPage extends Component {
       <div className="container">
         {this.state.audioBuffer || this.state.decoding ? (
           <div>
-            <h2 className="app-title">Audio Cutter</h2>
-
             {this.state.decoding ? (
               <div className="player player-landing">DECODING...</div>
             ) : (
@@ -194,7 +192,7 @@ class SnippingPage extends Component {
                   this.handlePlayPauseClick(0);
                 }}
                 containerHeight={160}
-                containerWidth={1000}
+                containerWidth={1080}
                 smallVersion={false}
                 ref={this.setRef}
               />
@@ -286,8 +284,8 @@ class SnippingPage extends Component {
                   >
                     Publish
                   </Button>
-                  <MyVerticallyCenteredModal onClose={() => this.setModal(false)} isOpen={this.state.modalShow} unstable_ModalBackdropScroll>
-                    {<Post/>}
+                  <MyVerticallyCenteredModal onClose={() => this.setModal(false)} isOpen={this.state.modalShow} headerText={'Post your Content'} unstable_ModalBackdropScroll>
+                  {<PostForm/>}
                   </MyVerticallyCenteredModal>
                 </Link>
               </div>

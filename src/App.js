@@ -12,12 +12,14 @@ function App() {
     <div className="App">
       <div className='contentWrapper'>
       <SideNav></SideNav>
+      <div className='body-container'>
       <Switch>
         <Route path="/Authenticate" component={Authenticate} />
         <Route path="/Post" component={Post} />
         <Route path="/Snipping" component={SnippingPage} />
         <Route path="/*" component={Home} />
       </Switch>
+      </div>
       </div>
     </div>
   );
