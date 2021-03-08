@@ -13,7 +13,6 @@
 }
  .app-title {
 	 position: absolute;
-	 text-align: center;
 	 color: #FFFFFF;
 	 font-size: 40px;
 	 left: 0;
@@ -76,8 +75,9 @@
 	 margin-bottom: 40px;
 }
  .controllers {
-	 margin-top: 10px;
-}
+	 margin-top: 24px;
+	display:flex;
+	}
  .controllers .seconds {
 	 font-size: 12px;
 	 line-height: 36px;
@@ -96,7 +96,7 @@
 	 padding: 40px;
 	 text-align: center;
 	 cursor: pointer;
-	 color: #ffffff;
+	 color: #e2e2e2;
 	 transition: 0.3s;
 	 width: 60%;
 	 background-color: #1F1F1F;
@@ -107,8 +107,8 @@
 	 font-size: 24px;
 }
  .file-main:hover {
-	 color: #141414;
-	 background-color: #ADDEC9;
+	 color: #ffffff;
+	 background-color: #333333;
 	 opacity: 100%;
 	 border: 1px;
 }
@@ -133,15 +133,17 @@
 	 display: inline-block;
 	 background-color: #1F1F1F;
 	 font-size: 16px;
-	 text-align: center;
-	 color: #FFFFFF;
+	 color: #e2e2e2;
 	 padding: 10px;
 	 margin-right: 10px;
 	 box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
 	 cursor: pointer;
+	
 }
  .ctrl-item:hover {
 	box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+	background-color:#333333;
+	color : #ffffff;
 }
  .ctrl-item .icon {
 	 display: block;
@@ -163,8 +165,8 @@
 	 transition-duration: .3s;
 	 transition-property: opacity, visibility;
 	 list-style: none;
-	 background: #E2E2E2;
-	 color: #141414;
+	 background: #292929;
+	 color: #757575;
 	 box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
 	 padding: 0;
 	 margin: 0;
@@ -176,11 +178,10 @@
 	 text-align: center;
 	 padding: 5px 0;
 	 color: inherit;
-	 font-size: 12px;
+	 font-size: 14px;
 	 cursor: pointer;
 }
  .dropdown .list a:hover {
-	 
 	 background: #1F1F1F;
 	 color: #FFFFFF;
 }
@@ -218,3 +219,21 @@
 	 margin-left: -5px;
 }
  
+.saveButton {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 120px;
+	min-height: 40px;
+	margin-top: 24px;
+	background-color: #1F1F1F;
+	box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+}
+
+.savedContainer {
+	display:grid;
+	margin-top:24px;
+	column-gap: 24px;
+	row-gap: 24px;
+	grid-template-columns: 1fr 1fr 1fr;
+}

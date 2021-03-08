@@ -6,6 +6,13 @@ import { isAudio, readBlobURL, download, rename } from './utils.jsx'
 import { sliceAudioBuffer } from './audio-helper'
 import { encode } from './worker-client'
 import WebAudio from './webaudio'
+import { ButtonGroup } from "baseui/button-group";
+import { Button, KIND } from "baseui/button";
+import {
+  Card,
+  StyledBody,
+  StyledAction
+} from "baseui/card";
 
 import './SnippingPage.css'
 
@@ -23,6 +30,7 @@ class SnippingPage extends Component {
       endTime: Infinity,
       currentTime: 0,
       processing: false,
+      savedClips: []
     }
   }
 
@@ -82,6 +90,28 @@ class SnippingPage extends Component {
     })
   }
 
+  handleSaveClip = ( ) => {
+
+     console.log('state ' + this.state)
+    const { startTime, endTime } = this.state
+    console.log(startTime, "   " , endTime) 
+    const newClip = {startTime,endTime}
+    console.log(newClip)
+
+    this.setState({
+      savedClips: [...this.state.savedClips, newClip]
+    },this.addClips)
+    console.log(this.state.savedClips)
+
+  }
+
+  deleteSavedClip = (item) => {
+     this.setState({
+      savedClips: this.state.savedClips.filter( clip => clip !== item)
+    }) 
+  }
+
+
   get startByte () {
     return parseInt(this.audioBuffer.length * this.state.start / this.widthDurationRatio / this.duration, 10)
   }
@@ -122,6 +152,7 @@ class SnippingPage extends Component {
     return seconds.toFixed(2) + 's'
   }
 
+
   render () {
     const { state } = this
 
@@ -154,24 +185,22 @@ class SnippingPage extends Component {
               }
 
               <div className='controllers'>
+              <ButtonGroup>
+                <Button>
                 <FilePicker onChange={this.handleFileChange}>
-                  <div className='ctrl-item' title='Reselect File'>
                     Upload
-                  </div>
                 </FilePicker>
-
-                <a className='ctrl-item' title='Play/Pause' onClick={this.handlePlayPauseClick}>
+                </Button>
+                <Button onClick={this.handlePlayPauseClick}>
                   Play/Pause
-                </a>
-
-                <a className='ctrl-item' title='Replay' onClick={this.handleReplayClick}>
+                </Button>
+                <Button onClick={this.handleReplayClick}>
                   Replay
-                </a>
-
+                </Button>
+                <Button>
                 <div className='dropdown list-wrap'>
-                  <a className='ctrl-item'>
+                  
                     Download
-                  </a>
                   {
                     !this.state.processing && (
                       <ul className='list'>
@@ -181,6 +210,9 @@ class SnippingPage extends Component {
                     )
                   }
                 </div>
+                </Button>
+                </ButtonGroup>
+               
 
                 {
                   isFinite(this.state.endTime) &&
@@ -196,6 +228,42 @@ class SnippingPage extends Component {
                     }</span>)
                   </span>
                 }
+             
+              </div>
+              <div className='controllers'>
+                <Button kind={KIND.secondary} 
+                overrides={{
+                  BaseButton: {
+                    style: ({ $theme }) => ({
+                      color: $theme.colors.contentOnColorInverse,
+                      backgroundColor: $theme.colors.positive100
+                    })
+                  }
+                }}
+                onClick={this.handleSaveClip}>
+              Save clip
+              </Button>
+              </div>
+              <div className= "savedContainer">
+              {this.state.savedClips && this.state.savedClips.map((item) => (
+               <Card>
+               <StyledBody>
+               {'Start Time: ' + item.startTime}
+               <br/>
+               { 'End Time: ' + item.endTime}
+               </StyledBody>
+               <StyledAction>
+                 <Button
+                   overrides={{
+                     BaseButton: { style: { width: "100%" } }
+                   }}
+                   onClick= {() => this.deleteSavedClip(item)}
+                 >
+                   Delete
+                 </Button>
+               </StyledAction>
+             </Card>
+              ))}
               </div>
             </div>
           ) : (
