@@ -31,8 +31,14 @@ export default class Dragger extends PureComponent {
   }
 
   render () {
+    const draggerClass = classnames(
+      'dragger',
+      {
+        'dragger_small': this.props.smallVersion,
+      }
+    )
     return (
-      <div className={classnames('dragger', this.props.className)}
+      <div className={draggerClass}
         onMouseDown={this.handleMouseDown}
         style={{
           left: this.props.x + 'px',
@@ -55,5 +61,6 @@ export default class Dragger extends PureComponent {
     onDrag: PropTypes.func,
     className: PropTypes.string,
     children: PropTypes.element,
+    smallVersion: PropTypes.bool,
   }
 }

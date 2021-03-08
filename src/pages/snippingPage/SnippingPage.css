@@ -1,220 +1,250 @@
-
 .btn-reset {
-	 padding: 0;
-	 border: 0;
-	 outline: 0;
-	 background: none;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
 }
- .container {
-	 box-sizing: border-box;
-	 position: relative;
-	 width: 1080px;
-	 margin: 0 auto;
+.container {
+  box-sizing: border-box;
+  position: relative;
+  width: 1080px;
+  margin: 0 auto;
 }
- .app-title {
-	 position: absolute;
-	 text-align: center;
-	 color: #FFFFFF;
-	 font-size: 40px;
-	 left: 0;
-	 right: 0;
-	 top: -135px;
+.app-title {
+  position: absolute;
+  color: #ffffff;
+  font-size: 40px;
+  left: 0;
+  right: 0;
+  top: -135px;
 }
- .player {
-	position: relative;
-	margin: 0 auto;
-	height: 320px;
-	display: block;
-	background-color: #1F1F1F;
-	box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+.player {
+  position: relative;
+  margin: 0 auto;
+  height: 320px;
+  display: block;
+  background-color: #1f1f1f;
+  box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
 }
- .player .wave-canvas {
-	 display:flex;
-	 margin-top: auto;
-	 margin-bottom: auto;
+.player_small {
+  height: 160px;
+  background-color: #333333;
 }
- .player-landing {
-	 text-align: center;
-	 display: flex;
-	 flex-direction: column;
-	 justify-content: center;
-	 color: #ddd;
-	 font-size: 24px;
+.player .wave-canvas {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
 }
- .dragger {
-	 position: absolute;
-	 top: 0;
-	 bottom: 0;
-	 width: 1px;
-	 background: #999;
-	 cursor: col-resize;
-	 height:320px;
+.player-landing {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ddd;
+  font-size: 24px;
 }
- .dragger::after {
-	 content: '';
-	 position: absolute;
-	 left: -2px;
-	 right: -2px;
-	 top: 0;
-	 bottom: 0;
+.dragger {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #999;
+  cursor: col-resize;
+  height: 320px;
 }
- .dragger:hover {
-	 background: #A4FDD2;
+
+.dragger_small {
+  height: 160px;
 }
- .drag-current {
-	 background: #A4FDD2;
+.dragger::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 0;
+  bottom: 0;
 }
- .landing {
-	 padding-bottom: 100px;
+.dragger:hover {
+  background: #a4fdd2;
 }
- .landing h2 {
-	 padding: 0;
-	 margin: 0;
-	 text-align: center;
-	 color: #ccc;
-	 font-size: 40px;
-	 margin-bottom: 40px;
+.drag-current {
+  background: #a4fdd2;
 }
- .controllers {
-	 margin-top: 10px;
+.landing {
+  padding-bottom: 100px;
 }
- .controllers .seconds {
-	 font-size: 12px;
-	 line-height: 36px;
-	 margin-left: 10px;
-	 display: inline-block;
-	 overflow: hidden;
-	 color: #aaa;
+.landing h2 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: #ccc;
+  font-size: 40px;
+  margin-bottom: 40px;
 }
- .file input {
-	 visibility: hidden;
-	 position: absolute;
+.controllers {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
 }
- .file-main {
-	 display: block;
-	 margin: 0 auto;
-	 padding: 40px;
-	 text-align: center;
-	 cursor: pointer;
-	 color: #ffffff;
-	 transition: 0.3s;
-	 width: 60%;
-	 background-color: #1F1F1F;
-	 box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+.controllers .seconds {
+  font-size: 12px;
+  line-height: 36px;
+  margin-left: 10px;
+  display: inline-block;
+  overflow: hidden;
+  color: #aaa;
 }
- .file-main .icon {
-	 margin: -1px 5px 0;
-	 font-size: 24px;
+.file input {
+  visibility: hidden;
+  position: absolute;
 }
- .file-main:hover {
-	 color: #141414;
-	 background-color: #ADDEC9;
-	 opacity: 100%;
-	 border: 1px;
+.file-main {
+  display: block;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  color: #e2e2e2;
+  transition: 0.3s;
+  width: 60%;
+  background-color: #1f1f1f;
+  box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
 }
- .icon {
-	 width: 1em;
-	 height: 1em;
-	 fill: currentColor;
-	 vertical-align: middle;
+.file-main .icon {
+  margin: -1px 5px 0;
+  font-size: 24px;
 }
- @keyframes spin {
-	 from {
-		 transform: rotate(0);
-	}
-	 to {
-		 transform: rotate(360deg);
-	}
+.file-main:hover {
+  color: #ffffff;
+  background-color: #333333;
+  opacity: 100%;
+  border: 1px;
 }
- .icon-spin {
-	 animation: spin infinite 1s linear;
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
 }
- .ctrl-item {
-	 display: inline-block;
-	 background-color: #1F1F1F;
-	 font-size: 16px;
-	 text-align: center;
-	 color: #FFFFFF;
-	 padding: 10px;
-	 margin-right: 10px;
-	 box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
-	 cursor: pointer;
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
- .ctrl-item:hover {
-	box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+.icon-spin {
+  animation: spin infinite 1s linear;
 }
- .ctrl-item .icon {
-	 display: block;
+.ctrl-item {
+  display: inline-block;
+  background-color: #1f1f1f;
+  font-size: 16px;
+  color: #e2e2e2;
+  padding: 10px;
+  margin-right: 10px;
+  box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+  cursor: pointer;
 }
- .dropdown {
-	 display: inline-block;
-	 position: relative;
+.ctrl-item:hover {
+  box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+  background-color: #333333;
+  color: #ffffff;
 }
- .dropdown .list-wrap {
-	 position: relative;
+.ctrl-item .icon {
+  display: block;
 }
- .dropdown .list {
-	 position: absolute;
-	 width: 60px;
-	 top: 0;
-	 left: 0;
-	 visibility: hidden;
-	 opacity: 0;
-	 transition-duration: .3s;
-	 transition-property: opacity, visibility;
-	 list-style: none;
-	 background: #E2E2E2;
-	 color: #141414;
-	 box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
-	 padding: 0;
-	 margin: 0;
-	 z-index: 10;
+.dropdown {
+  display: inline-block;
+  position: relative;
 }
- .dropdown .list a {
-	 display: block;
-	 width: 100%;
-	 text-align: center;
-	 padding: 5px 0;
-	 color: inherit;
-	 font-size: 12px;
-	 cursor: pointer;
+.dropdown .list-wrap {
+  position: relative;
 }
- .dropdown .list a:hover {
-	 
-	 background: #1F1F1F;
-	 color: #FFFFFF;
+.dropdown .list {
+  position: absolute;
+  width: 60px;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition-duration: 0.3s;
+  transition-property: opacity, visibility;
+  list-style: none;
+  background: #292929;
+  color: #757575;
+  box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+  padding: 0;
+  margin: 0;
+  z-index: 10;
 }
- .dropdown:hover .list {
-	 opacity: 1;
-	 visibility: visible;
+.dropdown .list a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  color: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.dropdown .list a:hover {
+  background: #1f1f1f;
+  color: #ffffff;
+}
+.dropdown:hover .list {
+  opacity: 1;
+  visibility: visible;
 }
 .clipper {
-	position: absolute;
-	display:flex;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
- .cursor-current {
-	 position: absolute;
-	 font-size: 12px;
-	 top: -22px;
-	 padding: 1px 3px;
-	 text-align: center;
-	 color: #000000;
-	 transform: translate(-50%) scale(0.8);
-	 background: #A4FDD2;
+.cursor-current {
+  position: absolute;
+  font-size: 12px;
+  top: -22px;
+  padding: 1px 3px;
+  text-align: center;
+  color: #000000;
+  transform: translate(-50%) scale(0.8);
+  background: #a4fdd2;
 }
- .cursor-current .num {
-	 font-family: monospace;
+.cursor-current .num {
+  font-family: monospace;
 }
- .cursor-current::after {
-	 content: '';
-	 position: absolute;
-	 border: 5px solid transparent;
-	 border-top-color: #A4FDD2;
-	 bottom: -9px;
-	 left: 50%;
-	 margin-left: -5px;
+.cursor-current::after {
+  content: "";
+  position: absolute;
+  border: 5px solid transparent;
+  border-top-color: #a4fdd2;
+  bottom: -9px;
+  left: 50%;
+  margin-left: -5px;
 }
- 
+
+.saveButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 120px;
+  min-height: 40px;
+  margin-top: 24px;
+  background-color: #1f1f1f;
+  box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+}
+
+.savedContainer {
+  display: grid;
+  margin-top: 24px;
+  column-gap: 24px;
+  row-gap: 24px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.lastButton {
+  align-self: flex-end;
+}
