@@ -10,8 +10,10 @@ import { ButtonGroup } from "baseui/button-group";
 import { Button, KIND } from "baseui/button";
 import { Card, StyledBody, StyledAction } from "baseui/card";
 import { Link } from "react-router-dom";
+import MyVerticallyCenteredModal from "../ModalPage/MyVerticallyCenteredModal"
 
 import "./SnippingPage.css";
+import Post from "../post/Post";
 
 class SnippingPage extends Component {
   constructor() {
@@ -26,9 +28,14 @@ class SnippingPage extends Component {
       endTime: Infinity,
       currentTime: 0,
       processing: false,
-      savedClips: []
+      savedClips: [],
+      modalShow: false
     };
   }
+
+  setModal = (modalState) => {
+    this.setState({ modalShow: modalState });
+  };
 
   playerRefs = [];
 
@@ -275,9 +282,13 @@ class SnippingPage extends Component {
                         })
                       }
                     }}
+                    onClick={() => this.setModal(true)}
                   >
                     Publish
                   </Button>
+                  <MyVerticallyCenteredModal onClose={() => this.setModal(false)} isOpen={this.state.modalShow} unstable_ModalBackdropScroll>
+                    {<Post/>}
+                  </MyVerticallyCenteredModal>
                 </Link>
               </div>
             </div>
