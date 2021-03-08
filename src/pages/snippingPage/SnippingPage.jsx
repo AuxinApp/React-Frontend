@@ -11,6 +11,8 @@ import { Button, KIND } from "baseui/button";
 import { Card, StyledBody, StyledAction } from "baseui/card";
 import { Link } from "react-router-dom";
 
+import sound_file from "../../media/courage.mp3";
+
 import "./SnippingPage.css";
 
 class SnippingPage extends Component {
@@ -28,6 +30,9 @@ class SnippingPage extends Component {
       processing: false,
       savedClips: []
     };
+
+    // FIXME: for demo purposes only
+    this.handlePreloadedAudioFile(sound_file);
   }
 
   playerRefs = [];
@@ -35,6 +40,12 @@ class SnippingPage extends Component {
   setRef = ref => {
     this.playerRefs.push(ref);
   };
+
+  // FIXME: for demo purposes only
+  handlePreloadedAudioFile = async file_path => {
+    let sound_blob = await fetch(sound_file).then(r => r.blob());
+    this.handleFileChange(sound_blob);
+  }
 
   handleFileChange = async file => {
     if (!isAudio(file)) {
@@ -53,7 +64,8 @@ class SnippingPage extends Component {
     window.audioBuffer = audioBuffer;
 
     this.setState({
-      paused: false,
+      // setting this to true so no auto playback after audio is loaded
+      paused: true, 
       decoding: false,
       audioBuffer,
       startTime: 0,
