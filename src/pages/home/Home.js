@@ -28,6 +28,9 @@ import {
 } from 'react-vis';
 import {useStyletron} from 'baseui';
 
+import { useHistory } from "react-router-dom";
+
+
 import {
   StyledTable,
   StyledHead,
@@ -168,6 +171,13 @@ const Home = () => {
     fill: '#FFFFFF',
   };
 
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `/Snipping`; 
+    history.push(path);
+  }
+
   return (
     <div>
         <div style={headerstyle}>
@@ -247,6 +257,7 @@ const Home = () => {
                 overrides={{
                   BaseButton: { style: { width: "20%", marginTop: "2%"} }
                 }}
+                onClick={routeChange}
               >
                 Go to Creator Board
               </Button>
