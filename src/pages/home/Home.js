@@ -240,11 +240,12 @@ const Home = () => {
             <StyledBody>
               We saw that you just uploaded your latest Podcast for Nimble Ideas. Let's help you get the word out!
             </StyledBody>
+            
 
             <StyledAction>
               <Button
                 overrides={{
-                  BaseButton: { style: { width: "100%"} }
+                  BaseButton: { style: { width: "20%", marginTop: "2%"} }
                 }}
               >
                 Go to Creator Board
