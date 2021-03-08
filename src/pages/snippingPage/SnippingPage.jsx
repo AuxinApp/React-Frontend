@@ -21,7 +21,8 @@ class SnippingPage extends Component {
     this.handler = this.handler.bind(this);
     this.state = {
       file: null,
-      decoding: false,
+      // FIXME: setting this to true for demo purposes only
+      decoding: true,
       audioBuffer: null,
       paused: true,
       startTime: 0,
