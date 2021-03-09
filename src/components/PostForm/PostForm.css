@@ -1,0 +1,32 @@
+.content-container {
+    display:grid;
+    grid-template-columns: .65fr .35fr;
+    grid-column-gap: 24px;
+    margin-top: 32px;
+}
+
+.image-wrapper {
+    width: 100%;
+    margin-top: 24px;
+    
+}
+
+.image-scale {
+    object-fit: contain;
+    max-width:100%;
+    max-height:100%;
+    box-shadow: 0 4px 16px hsla(0, 0%, 0%, 0.16);
+
+}
+
+
+.date-wrapper {
+    margin-top:32px;
+    display:flex;
+    margin-left:auto;
+    justify-content:right;
+}
+
+.date-item {
+    margin-right: 24px;
+}
