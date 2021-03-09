@@ -46,13 +46,17 @@ const SideNav = ({ history, location }) => {
                 return {
                   ":hover": {
                     backgroundColor: $theme.colors.mono800,
-                    color: $theme.colors.white
+                    color: $theme.colors.white,
+                    boxShadow: $theme.lighting.shadow400,
+
                   }
                 };
               return {
                 backgroundColor: $theme.colors.mono700,
-                borderLeftColor: "#A4FDD2",
-                backgroundImage: ""
+                borderLeftColor: "#85d6af",
+                backgroundImage: "",
+                boxShadow: $theme.lighting.shadow600,
+
               };
             }
           }

@@ -156,15 +156,14 @@ function PostForm() {
           BaseButton: {
             style: ({ $theme }) => ({
               marginBottom: $theme.sizing.scale600,
-              backgroundColor: "#A4FDD2",
+              backgroundColor: "#85d6af",
               boxShadow: $theme.lighting.shadow600,
               ":hover": {
-                transform: 'translate3d(0, -2px, 0)',
-                boxShadow: '0 8px 24px hsla(0, 0%, 0%, .65)',
-                backgroundColor: "#A4FDD2",
-                filter: 'brightness(95%)',
-
-              },
+                transform: "translate3d(0, -2px, 0)",
+                boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                backgroundColor: "#85d6af",
+                filter: "brightness(95%)"
+              }
             })
           }
         }}

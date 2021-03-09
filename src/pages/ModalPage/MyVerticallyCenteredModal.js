@@ -3,7 +3,6 @@ import {
     Modal,
     ModalHeader,
     ModalBody,
-    FocusOnce,
 } from 'baseui/modal';
 
 
@@ -16,9 +15,7 @@ export default function MyVerticallyCenteredModal(props) {
             isOpen={props.isOpen}
             unstable_ModalBackdropScroll
         >
-            <FocusOnce>
-                <ModalHeader>{props.headerText}</ModalHeader>
-            </FocusOnce>
+            <ModalHeader>{props.headerText}</ModalHeader>
             <ModalBody $as="div">
                 {props.children}
             </ModalBody>

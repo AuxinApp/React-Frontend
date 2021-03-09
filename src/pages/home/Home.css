@@ -11,6 +11,7 @@
 
 .analytics-container{
   margin-top:62px;
+  text-align: left
 }
 
 .notification-container {
@@ -31,5 +32,8 @@ h3{
 
 }
 h5 {
+  color:#757575 !important ;
+}
+h6 {
   color:#757575 !important ;
 }

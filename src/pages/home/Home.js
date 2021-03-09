@@ -14,7 +14,7 @@ import { AreaSeries, XAxis, YAxis, XYPlot } from "react-vis";
 import { useStyletron } from "baseui";
 
 import { useHistory } from "react-router-dom";
-import { H2, H3, H5, Paragraph1 } from "baseui/typography";
+import { H2, H3, Label1, H5, Paragraph1 } from "baseui/typography";
 
 const Home = () => {
   const facebookBlue = "#4267B2";
@@ -199,16 +199,14 @@ const Home = () => {
                   style: ({ $theme }) => ({
                     width: "100%",
                     marginTop: $theme.sizing.scale600,
-                    backgroundColor: "#A4FDD2",
+                    backgroundColor: "#85d6af",
                     boxShadow: $theme.lighting.shadow600,
                     ":hover": {
-                      transform: 'translate3d(0, -2px, 0)',
-                      boxShadow: '0 8px 24px hsla(0, 0%, 0%, .65)',
-                      backgroundColor: "#A4FDD2",
-                      filter: 'brightness(95%)',
-
-                    },
-                   
+                      transform: "translate3d(0, -2px, 0)",
+                      boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                      backgroundColor: "#85d6af",
+                      filter: "brightness(95%)"
+                    }
                   })
                 }
               }}
@@ -329,15 +327,14 @@ const Home = () => {
                   style: ({ $theme }) => ({
                     width: "100%",
                     marginTop: $theme.sizing.scale600,
-                    backgroundColor: "#A4FDD2",
+                    backgroundColor: "#85d6af",
                     boxShadow: $theme.lighting.shadow600,
                     ":hover": {
-                      transform: 'translate3d(0, -2px, 0)',
-                      boxShadow: '0 8px 24px hsla(0, 0%, 0%, .65)',
-                      backgroundColor: "#A4FDD2",
-                      filter: 'brightness(95%)',
-
-                    },
+                      transform: "translate3d(0, -2px, 0)",
+                      boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                      backgroundColor: "#85d6af",
+                      filter: "brightness(95%)"
+                    }
                   })
                 }
               }}
@@ -365,7 +362,11 @@ const Home = () => {
             }}
           >
             <StyledBody>
-              <H5>Facebook</H5>
+              <div className="graph-title">
+                <H5 color={"#757575"} marginTop={"16px"} marginBottom={"40px"}>
+                  Facebook
+                </H5>
+              </div>
               <GraphCell>
                 <AreaSeries {...seriesPropsFB} />
               </GraphCell>
@@ -383,7 +384,9 @@ const Home = () => {
             }}
           >
             <StyledBody>
-              <H5>Twitter</H5>
+              <H5 color={"#757575"} marginTop={"16px"} marginBottom={"40px"}>
+                Twitter
+              </H5>
               <GraphCell>
                 <AreaSeries {...seriesPropsTwitter} />
               </GraphCell>
@@ -401,7 +404,9 @@ const Home = () => {
             }}
           >
             <StyledBody>
-              <H5>Instagram</H5>
+              <H5 color={"#757575"} marginTop={"16px"} marginBottom={"40px"}>
+                Instagram
+              </H5>
               <GraphCell>
                 <AreaSeries {...seriesPropsIG} />
               </GraphCell>
