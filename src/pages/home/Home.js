@@ -200,7 +200,15 @@ const Home = () => {
                     width: "100%",
                     marginTop: $theme.sizing.scale600,
                     backgroundColor: "#A4FDD2",
-                    boxShadow: $theme.lighting.shadow600
+                    boxShadow: $theme.lighting.shadow600,
+                    ":hover": {
+                      transform: 'translate3d(0, -2px, 0)',
+                      boxShadow: '0 8px 24px hsla(0, 0%, 0%, .65)',
+                      backgroundColor: "#A4FDD2",
+                      filter: 'brightness(95%)',
+
+                    },
+                   
                   })
                 }
               }}
@@ -322,7 +330,14 @@ const Home = () => {
                     width: "100%",
                     marginTop: $theme.sizing.scale600,
                     backgroundColor: "#A4FDD2",
-                    boxShadow: $theme.lighting.shadow600
+                    boxShadow: $theme.lighting.shadow600,
+                    ":hover": {
+                      transform: 'translate3d(0, -2px, 0)',
+                      boxShadow: '0 8px 24px hsla(0, 0%, 0%, .65)',
+                      backgroundColor: "#A4FDD2",
+                      filter: 'brightness(95%)',
+
+                    },
                   })
                 }
               }}

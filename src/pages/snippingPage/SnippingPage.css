@@ -25,7 +25,7 @@
   height: 320px;
   display: block;
   background-color: #1f1f1f;
-  box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.16);
+  box-shadow: 0 4px 16px hsla(0, 0%, 0%, 0.16);
 }
 .player_small {
   height: 160px;

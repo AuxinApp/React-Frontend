@@ -214,7 +214,21 @@ class SnippingPage extends Component {
 
             <div className="controllers">
               <ButtonGroup>
-                <Button>
+                <Button
+                  overrides={{
+                    BaseButton: {
+                      style: ({ $theme }) => ({
+                        boxShadow: $theme.lighting.shadow600,
+
+                        ":hover": {
+                          transform: "translate3d(0, -2px, 0)",
+                          boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                          filter: "brightness(95%)"
+                        }
+                      })
+                    }
+                  }}
+                >
                   <FilePicker onChange={this.handleFileChange}>
                     Upload
                   </FilePicker>
@@ -223,11 +237,55 @@ class SnippingPage extends Component {
                   onClick={() => {
                     this.handlePlayPauseClick(0);
                   }}
+                  overrides={{
+                    BaseButton: {
+                      style: ({ $theme }) => ({
+                        boxShadow: $theme.lighting.shadow600,
+
+                        ":hover": {
+                          transform: "translate3d(0, -2px, 0)",
+                          boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                          filter: "brightness(95%)"
+                        }
+                      })
+                    }
+                  }}
                 >
                   Play/Pause
                 </Button>
-                <Button onClick={this.handleReplayClick}>Replay</Button>
-                <Button>
+                <Button
+                  overrides={{
+                    BaseButton: {
+                      style: ({ $theme }) => ({
+                        boxShadow: $theme.lighting.shadow600,
+
+                        ":hover": {
+                          transform: "translate3d(0, -2px, 0)",
+                          boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                          filter: "brightness(95%)"
+                        }
+                      })
+                    }
+                  }}
+                  onClick={this.handleReplayClick}
+                >
+                  Replay
+                </Button>
+                <Button
+                  overrides={{
+                    BaseButton: {
+                      style: ({ $theme }) => ({
+                        boxShadow: $theme.lighting.shadow600,
+
+                        ":hover": {
+                          transform: "translate3d(0, -2px, 0)",
+                          boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                          filter: "brightness(95%)"
+                        }
+                      })
+                    }
+                  }}
+                >
                   <div className="dropdown list-wrap">
                     Download
                     {!this.state.processing && (
@@ -275,7 +333,15 @@ class SnippingPage extends Component {
                 kind={KIND.secondary}
                 overrides={{
                   BaseButton: {
-                    style: ({ $theme }) => ({})
+                    style: ({ $theme }) => ({
+                      boxShadow: $theme.lighting.shadow600,
+
+                      ":hover": {
+                        transform: "translate3d(0, -2px, 0)",
+                        boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                        filter: "brightness(95%)"
+                      }
+                    })
                   }
                 }}
                 onClick={this.handleSaveClip}
@@ -290,7 +356,15 @@ class SnippingPage extends Component {
                       BaseButton: {
                         style: ({ $theme }) => ({
                           color: $theme.colors.contentOnColorInverse,
-                          backgroundColor: "#A4FDD2"
+                          backgroundColor: "#A4FDD2",
+                          boxShadow: $theme.lighting.shadow600,
+
+                          ":hover": {
+                            transform: "translate3d(0, -2px, 0)",
+                            boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                            backgroundColor: "#A4FDD2",
+                            filter: "brightness(95%)"
+                          }
                         })
                       }
                     }}
