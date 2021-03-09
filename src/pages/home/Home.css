@@ -17,7 +17,7 @@
   margin-top: 40px;
   text-align: left;
   display: grid;
-  grid-template-columns: 65% 35%;
+  grid-template-columns: .65fr .35fr;
   grid-column-gap: 32px;
 }
 
