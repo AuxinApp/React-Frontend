@@ -168,7 +168,7 @@ export default class Player extends PureComponent {
       return `rect(0, ${end}px, ${height}px, ${start}px)`;
     }
 
-    const color1 = "#0cf";
+    const color1 = "#85d6af";
     const color2 = Color(color1)
       .lighten(0.1)
       .toString();
