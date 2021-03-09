@@ -1,74 +1,40 @@
 import React from "react";
-import './Home.css'
+import "./Home.css";
 import {
   HeaderNavigation,
   ALIGN,
-  StyledNavigationList,
-  StyledNavigationItem,
+  StyledNavigationList
 } from "baseui/header-navigation";
-import {
-  Card,
-  StyledBody,
-  StyledAction,
-  StyledThumbnail,
-} from "baseui/card";
-import {BaseProvider, LightTheme, DarkTheme} from 'baseui';
+import { Card, StyledBody, StyledAction, StyledThumbnail } from "baseui/card";
 import podcastLogo from "../../media/nimbleIdeas.jpeg";
-import {Block} from 'baseui/block';
-
-import { StyledLink } from "baseui/link";
+import { ListItem, ListItemLabel } from "baseui/list";
+import { Plus } from "baseui/icon";
 import { Button } from "baseui/button";
-import {
-  AreaSeries,
-  VerticalBarSeries,
-  LineMarkSeries,
-  XAxis,
-  YAxis,
-  XYPlot,
-} from 'react-vis';
-import {useStyletron} from 'baseui';
+import { AreaSeries, XAxis, YAxis, XYPlot } from "react-vis";
+import { useStyletron } from "baseui";
 
 import { useHistory } from "react-router-dom";
-
-
-import {
-  StyledTable,
-  StyledHead,
-  StyledHeadCell,
-  StyledRow,
-  StyledCell,
-} from 'baseui/table';
-
+import { H2, H3, H5, Paragraph1 } from "baseui/typography";
 
 const Home = () => {
-  const headerstyle = {
-    padding: "1%"
-  };
+  const facebookBlue = "#4267B2";
+  const instagramPurple = "#833AB4";
+  const twitterBlue = "#1DA1F2";
 
-  const engagestyle = {
-    marginTop: "7%"
-  };
-
-  const graphstyle = {
-    marginLeft: "10%",
-    marginTop: "7%"
-  };
-
-  const GraphCell = ({children}) => {
+  const GraphCell = ({ children }) => {
     const [css, theme] = useStyletron();
     return (
-      <div className={css({display: 'flex', alignItems: 'center'})}>
+      <div className={css({ display: "flex", alignItems: "center" })}>
         <div
           className={css({
-            marginRight: theme.sizing.scale600,
+            marginRight: theme.sizing.scale600
           })}
-        >
-        </div>
+        ></div>
         <div>
           <XYPlot
-            width={250}
-            height={48}
-            margin={{left: 6, right: 6, top: 6, bottom: 6}}
+            width={200}
+            height={72}
+            margin={{ left: 6, right: 6, top: 6, bottom: 6 }}
           >
             <XAxis on0={true} />
             <YAxis on0={true} />
@@ -83,229 +49,353 @@ const Home = () => {
     data: [
       {
         x: 0,
-        y: 5,
+        y: 5
       },
       {
         x: 1,
-        y: 15,
+        y: 15
       },
       {
         x: 2,
-        y: 13,
+        y: 13
       },
       {
         x: 3,
-        y: 20,
+        y: 20
       },
       {
         x: 4,
-        y: 13,
+        y: 13
       },
       {
         x: 5,
-        y: 22,
-      },
+        y: 22
+      }
     ],
     opacity: 1,
-    fill: '#FFFFFF',
+    fill: "#678ab5",
+    stroke: facebookBlue
   };
   const seriesPropsIG = {
     data: [
       {
         x: 0,
-        y: 1,
+        y: 1
       },
       {
         x: 1,
-        y: 3,
+        y: 3
       },
       {
         x: 2,
-        y: 3,
+        y: 3
       },
       {
         x: 3,
-        y: 7,
+        y: 7
       },
       {
         x: 4,
-        y: 13,
+        y: 13
       },
       {
         x: 5,
-        y: 22,
-      },
+        y: 22
+      }
     ],
     opacity: 1,
-    fill: '#FFFFFF',
+    fill: "#9769b5",
+    stroke: instagramPurple
   };
 
   const seriesPropsTwitter = {
     data: [
       {
         x: 0,
-        y: 5,
+        y: 5
       },
       {
         x: 1,
-        y: 15,
+        y: 15
       },
       {
         x: 2,
-        y: 20,
+        y: 20
       },
       {
         x: 3,
-        y: 26,
+        y: 26
       },
       {
         x: 4,
-        y: 28,
+        y: 28
       },
       {
         x: 5,
-        y: 35,
-      },
+        y: 35
+      }
     ],
     opacity: 1,
-    fill: '#FFFFFF',
+    fill: "#99d8ff",
+    stroke: twitterBlue
   };
 
   const history = useHistory();
 
-  const routeChange = () =>{ 
-    let path = `/Snipping`; 
+  const routeChange = () => {
+    let path = `/Snipping`;
     history.push(path);
-  }
+  };
 
   return (
     <div>
-        <div style={headerstyle}>
-          <BaseProvider theme={LightTheme}>
-          <HeaderNavigation>
-            <StyledNavigationList $align={ALIGN.left}>
-              <h1>Hello Sharan!</h1>
-            </StyledNavigationList>
-            <StyledNavigationList $align={ALIGN.center} />
-            <StyledNavigationList $align={ALIGN.right}>
-            </StyledNavigationList>
-            <StyledNavigationList $align={ALIGN.right}>
-              <StyledNavigationItem>
-                <Button
-                overrides={{
-                  BaseButton: {
-                    style: ({ $theme }) => ({
-                      backgroundColor: '#3b5998'
-                    })
-                  }
-                }}
-                >Connected to Facebook</Button>
-              </StyledNavigationItem>
-   
-              <StyledNavigationItem>
-              <Button
-                overrides={{
-                  BaseButton: {
-                    style: ({ $theme }) => ({
-                      backgroundColor: '#e95950'
-                    })
-                  }
-                }}
-                >Connected to Instagram</Button>
-              </StyledNavigationItem>
-
-              <StyledNavigationItem>
-              <Button
-                overrides={{
-                  BaseButton: {
-                    style: ({ $theme }) => ({
-                      backgroundColor: '#1DA1F2'
-                    })
-                  }
-                }}
-                >Connected to Twitter</Button>
-              </StyledNavigationItem>
-
-              {/* <StyledNavigationItem>
-              <Button 
-                overrides={{
-                  BaseButton: {
-                    style: ({ $theme }) => ({
-                      backgroundColor: '#0e76a8'
-                    })
-                  }
-                }}
-                >Login to LinkedIn</Button>
-              </StyledNavigationItem> */}
-
-            </StyledNavigationList>
-          </HeaderNavigation>
-          </BaseProvider>
-        </div>
-        <div style={headerstyle}>
-          <Card theme={DarkTheme}>
-            <StyledThumbnail
-              src={podcastLogo}
-            />
-            <StyledBody>
-              We saw that you just uploaded your latest Podcast for Nimble Ideas. Let's help you get the word out!
-            </StyledBody>
-            
-
-            <StyledAction>
-              <Button
-                overrides={{
-                  BaseButton: { style: { width: "20%", marginTop: "2%"} }
-                }}
-                onClick={routeChange}
-              >
-                Go to Creator Board
-              </Button>
-            </StyledAction>
-          </Card>
+      <div>
+        <HeaderNavigation
+          overrides={{
+            Root: {
+              style: ({ $theme }) => ({
+                backgroundColor: $theme.colors.mono800,
+                borderBottomColor: "transparent"
+              })
+            }
+          }}
+        >
+          <StyledNavigationList $align={ALIGN.left}>
+            <H2>Hello Sharan!</H2>
+          </StyledNavigationList>
+        </HeaderNavigation>
       </div>
-      
-      <div style={engagestyle}> 
-          <Block
-            as="h1"
+      <div className="notification-container">
+        <Card
+          title="Take Action!"
+          overrides={{
+            Root: {
+              style: ({ $theme }) => ({
+                borderColor: "transparent",
+                backgroundColor: $theme.colors.backgroundSecondary,
+                boxShadow: $theme.lighting.shadow600,
+                maxHeight: "254px"
+              })
+            },
+            Title: {
+              style: ({ $theme }) => ({
+                color: $theme.colors.mono300
+              })
+            }
+          }}
+        >
+          <StyledThumbnail src={podcastLogo} />
+          <StyledBody>
+            <Paragraph1>
+              We saw that you just uploaded your latest Podcast for Nimble
+              Ideas. Let's help you get the word out!
+            </Paragraph1>
+          </StyledBody>
+
+          <StyledAction>
+            <Button
+              overrides={{
+                BaseButton: {
+                  style: ({ $theme }) => ({
+                    width: "100%",
+                    marginTop: $theme.sizing.scale600,
+                    backgroundColor: "#A4FDD2",
+                    boxShadow: $theme.lighting.shadow600
+                  })
+                }
+              }}
+              onClick={routeChange}
+            >
+              Creator Studio
+            </Button>
+          </StyledAction>
+        </Card>
+        <Card
+          title="Accounts"
+          overrides={{
+            Root: {
+              style: ({ $theme }) => ({
+                borderColor: "transparent",
+                backgroundColor: $theme.colors.backgroundSecondary,
+                boxShadow: $theme.lighting.shadow600
+              })
+            },
+            Title: {
+              style: ({ $theme }) => ({
+                color: $theme.colors.mono300
+              })
+            }
+          }}
+        >
+          <StyledBody>
+            <ListItem
+              endEnhancer={() => (
+                <Button size="compact" kind="secondary" shape="pill">
+                  Active
+                </Button>
+              )}
+              overrides={{
+                Root: {
+                  style: ({ $theme }) => ({
+                    backgroundColor: $theme.colors.mono700
+                  })
+                },
+                Content: {
+                  style: ({ $theme }) => ({
+                    borderBottomColor: $theme.colors.mono500
+                  })
+                }
+              }}
+            >
+              <ListItemLabel>Facebook</ListItemLabel>
+            </ListItem>
+            <ListItem
+              endEnhancer={() => (
+                <Button size="compact" kind="secondary" shape="pill">
+                  Active
+                </Button>
+              )}
+              overrides={{
+                Root: {
+                  style: ({ $theme }) => ({
+                    backgroundColor: $theme.colors.mono700
+                  })
+                },
+                Content: {
+                  style: ({ $theme }) => ({
+                    borderBottomColor: $theme.colors.mono500
+                  })
+                }
+              }}
+            >
+              <ListItemLabel>Instagram</ListItemLabel>
+            </ListItem>
+            <ListItem
+              endEnhancer={() => (
+                <Button size="compact" kind="secondary" shape="pill">
+                  Active
+                </Button>
+              )}
+              overrides={{
+                Root: {
+                  style: ({ $theme }) => ({
+                    backgroundColor: $theme.colors.mono700
+                  })
+                },
+                Content: {
+                  style: ({ $theme }) => ({
+                    borderBottomColor: $theme.colors.mono500
+                  })
+                }
+              }}
+            >
+              <ListItemLabel>Twitter</ListItemLabel>
+            </ListItem>
+            <ListItem
+              endEnhancer={() => (
+                <Button size="compact" kind="secondary" shape="pill">
+                  Active
+                </Button>
+              )}
+              overrides={{
+                Root: {
+                  style: ({ $theme }) => ({
+                    backgroundColor: $theme.colors.mono700
+                  })
+                },
+                Content: {
+                  style: ({ $theme }) => ({
+                    borderBottomColor: $theme.colors.mono500
+                  })
+                }
+              }}
+            >
+              <ListItemLabel>Linkedin</ListItemLabel>
+            </ListItem>
+          </StyledBody>
+
+          <StyledAction>
+            <Button
+              overrides={{
+                BaseButton: {
+                  style: ({ $theme }) => ({
+                    width: "100%",
+                    marginTop: $theme.sizing.scale600,
+                    backgroundColor: "#A4FDD2",
+                    boxShadow: $theme.lighting.shadow600
+                  })
+                }
+              }}
+              onClick={routeChange}
+              startEnhancer={() => <Plus size={20}></Plus>}
+            >
+              Add Account
+            </Button>
+          </StyledAction>
+        </Card>
+      </div>
+
+      <div className="analytics-container">
+        <H3>Engagement Analytics</H3>
+        <div className="graph-container">
+          <Card
             overrides={{
-              Block: {
-                style: {color: 'white'},
-              },
+              Root: {
+                style: ({ $theme }) => ({
+                  borderColor: "transparent",
+                  backgroundColor: $theme.colors.backgroundSecondary,
+                  boxShadow: $theme.lighting.shadow600
+                })
+              }
             }}
           >
-          Engagement Analytics
-        </Block>
-        <div style={graphstyle}>
-          <StyledBody>
-            <StyledRow>
-              <StyledCell>
-                <GraphCell>
-                  <h2>Facebook</h2>
-                  <AreaSeries {...seriesPropsFB} />
-                </GraphCell>
-                </StyledCell>
-                <StyledCell>
-                  <GraphCell>
-                    <h2>Twitter</h2>
-                    <AreaSeries {...seriesPropsTwitter} />
-                  </GraphCell>
-                </StyledCell>
-
-                <StyledCell>
-
-                <GraphCell>
-                  <h2>Instagram</h2>
-                  <AreaSeries {...seriesPropsIG} />
-                </GraphCell>
-              </StyledCell>
-            </StyledRow>
-          </StyledBody>
-          
+            <StyledBody>
+              <H5>Facebook</H5>
+              <GraphCell>
+                <AreaSeries {...seriesPropsFB} />
+              </GraphCell>
+            </StyledBody>
+          </Card>
+          <Card
+            overrides={{
+              Root: {
+                style: ({ $theme }) => ({
+                  borderColor: "transparent",
+                  backgroundColor: $theme.colors.backgroundSecondary,
+                  boxShadow: $theme.lighting.shadow600
+                })
+              }
+            }}
+          >
+            <StyledBody>
+              <H5>Twitter</H5>
+              <GraphCell>
+                <AreaSeries {...seriesPropsTwitter} />
+              </GraphCell>
+            </StyledBody>
+          </Card>
+          <Card
+            overrides={{
+              Root: {
+                style: ({ $theme }) => ({
+                  borderColor: "transparent",
+                  backgroundColor: $theme.colors.backgroundSecondary,
+                  boxShadow: $theme.lighting.shadow600
+                })
+              }
+            }}
+          >
+            <StyledBody>
+              <H5>Instagram</H5>
+              <GraphCell>
+                <AreaSeries {...seriesPropsIG} />
+              </GraphCell>
+            </StyledBody>
+          </Card>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Home;

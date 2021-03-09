@@ -8,9 +8,9 @@ import { encode } from "./worker-client";
 import WebAudio from "./webaudio";
 import { ButtonGroup } from "baseui/button-group";
 import { Button, KIND } from "baseui/button";
-import { Card, StyledBody, StyledAction } from "baseui/card";
 import { Link } from "react-router-dom";
-import MyVerticallyCenteredModal from "../ModalPage/MyVerticallyCenteredModal"
+import MyVerticallyCenteredModal from "../ModalPage/MyVerticallyCenteredModal";
+import { H2 } from "baseui/typography";
 
 import sound_file from "../../media/courage.mp3";
 
@@ -39,7 +39,7 @@ class SnippingPage extends Component {
     this.handlePreloadedAudioFile(sound_file);
   }
 
-  setModal = (modalState) => {
+  setModal = modalState => {
     this.setState({ modalShow: modalState });
   };
 
@@ -53,7 +53,7 @@ class SnippingPage extends Component {
   handlePreloadedAudioFile = async file_path => {
     let sound_blob = await fetch(sound_file).then(r => r.blob());
     this.handleFileChange(sound_blob);
-  }
+  };
 
   handleFileChange = async file => {
     if (!isAudio(file)) {
@@ -73,7 +73,7 @@ class SnippingPage extends Component {
 
     this.setState({
       // setting this to true so no auto playback after audio is loaded
-      paused: true, 
+      paused: true,
       decoding: false,
       audioBuffer,
       startTime: 0,
@@ -186,9 +186,10 @@ class SnippingPage extends Component {
     const { state } = this;
 
     return (
-      <div className="container">
+      <div className="studio-container">
         {this.state.audioBuffer || this.state.decoding ? (
           <div>
+            <H2>Creator Studio</H2>
             {this.state.decoding ? (
               <div className="player player-landing">DECODING...</div>
             ) : (
@@ -205,7 +206,7 @@ class SnippingPage extends Component {
                   this.handlePlayPauseClick(0);
                 }}
                 containerHeight={160}
-                containerWidth={1080}
+                containerWidth={940}
                 smallVersion={false}
                 ref={this.setRef}
               />
@@ -289,7 +290,7 @@ class SnippingPage extends Component {
                       BaseButton: {
                         style: ({ $theme }) => ({
                           color: $theme.colors.contentOnColorInverse,
-                          backgroundColor: $theme.colors.positive100
+                          backgroundColor: "#A4FDD2"
                         })
                       }
                     }}
@@ -297,8 +298,13 @@ class SnippingPage extends Component {
                   >
                     Publish
                   </Button>
-                  <MyVerticallyCenteredModal onClose={() => this.setModal(false)} isOpen={this.state.modalShow} headerText={'Post your Content'} unstable_ModalBackdropScroll>
-                  {<PostForm/>}
+                  <MyVerticallyCenteredModal
+                    onClose={() => this.setModal(false)}
+                    isOpen={this.state.modalShow}
+                    headerText={"Post your Content"}
+                    unstable_ModalBackdropScroll
+                  >
+                    {<PostForm />}
                   </MyVerticallyCenteredModal>
                 </Link>
               </div>
