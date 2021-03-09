@@ -16,10 +16,17 @@ div {
 }
 
 .contentWrapper {
-  padding-top: 48px;
+  min-height:100vh;
   display:grid;
   grid-template-columns: 20% 80%;
+  height: 100%;
+  
 }
+.contentWrapper .nav-container, .body-container {
+  padding-top: 48px;
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

@@ -19,7 +19,7 @@ const SideNav = ({history,location}) => {
     return pathname
   }
   return (
-    <div>
+    <div className="nav-container">
         <Link to="/"><img className='logo' src={auxinLogo}></img></Link>
         
     <Navigation

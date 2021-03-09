@@ -10,10 +10,12 @@ import { ButtonGroup } from "baseui/button-group";
 import { Button, KIND } from "baseui/button";
 import { Card, StyledBody, StyledAction } from "baseui/card";
 import { Link } from "react-router-dom";
+import MyVerticallyCenteredModal from "../ModalPage/MyVerticallyCenteredModal"
 
 import sound_file from "../../media/courage.mp3";
 
 import "./SnippingPage.css";
+import PostForm from "./../../components/PostForm/PostForm";
 
 class SnippingPage extends Component {
   constructor() {
@@ -29,12 +31,17 @@ class SnippingPage extends Component {
       endTime: Infinity,
       currentTime: 0,
       processing: false,
-      savedClips: []
+      savedClips: [],
+      modalShow: false
     };
 
     // FIXME: for demo purposes only
     this.handlePreloadedAudioFile(sound_file);
   }
+
+  setModal = (modalState) => {
+    this.setState({ modalShow: modalState });
+  };
 
   playerRefs = [];
 
@@ -182,8 +189,6 @@ class SnippingPage extends Component {
       <div className="container">
         {this.state.audioBuffer || this.state.decoding ? (
           <div>
-            <h2 className="app-title">Audio Cutter</h2>
-
             {this.state.decoding ? (
               <div className="player player-landing">DECODING...</div>
             ) : (
@@ -200,7 +205,7 @@ class SnippingPage extends Component {
                   this.handlePlayPauseClick(0);
                 }}
                 containerHeight={160}
-                containerWidth={1000}
+                containerWidth={1080}
                 smallVersion={false}
                 ref={this.setRef}
               />
@@ -288,9 +293,13 @@ class SnippingPage extends Component {
                         })
                       }
                     }}
+                    onClick={() => this.setModal(true)}
                   >
                     Publish
                   </Button>
+                  <MyVerticallyCenteredModal onClose={() => this.setModal(false)} isOpen={this.state.modalShow} headerText={'Post your Content'} unstable_ModalBackdropScroll>
+                  {<PostForm/>}
+                  </MyVerticallyCenteredModal>
                 </Link>
               </div>
             </div>
