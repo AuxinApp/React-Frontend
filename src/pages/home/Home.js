@@ -1,10 +1,5 @@
 import React from "react";
 import "./Home.css";
-import {
-  HeaderNavigation,
-  ALIGN,
-  StyledNavigationList
-} from "baseui/header-navigation";
 import { Card, StyledBody, StyledAction, StyledThumbnail } from "baseui/card";
 import podcastLogo from "../../media/nimbleIdeas.jpeg";
 import { ListItem, ListItemLabel } from "baseui/list";
@@ -14,7 +9,7 @@ import { AreaSeries, XAxis, YAxis, XYPlot } from "react-vis";
 import { useStyletron } from "baseui";
 
 import { useHistory } from "react-router-dom";
-import { H2, H3, Label1, H5, Paragraph1 } from "baseui/typography";
+import { H2, H3, H5, Paragraph1 } from "baseui/typography";
 
 const Home = () => {
   const facebookBlue = "#4267B2";
@@ -149,21 +144,8 @@ const Home = () => {
 
   return (
     <div>
-      <div>
-        <HeaderNavigation
-          overrides={{
-            Root: {
-              style: ({ $theme }) => ({
-                backgroundColor: $theme.colors.mono800,
-                borderBottomColor: "transparent"
-              })
-            }
-          }}
-        >
-          <StyledNavigationList $align={ALIGN.left}>
-            <H2>Hello Sharan!</H2>
-          </StyledNavigationList>
-        </HeaderNavigation>
+      <div className="title-align">
+        <H2>Hello Sharan!</H2>
       </div>
       <div className="notification-container">
         <Card
