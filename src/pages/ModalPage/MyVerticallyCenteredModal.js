@@ -11,7 +11,6 @@ import {
 
 
 export default function MyVerticallyCenteredModal(props) {
-    console.log(props)
     return (
         <div className="modal-wrapper">
         <Modal
