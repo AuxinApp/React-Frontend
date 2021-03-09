@@ -1,3 +1,35 @@
 .myDiv {
     margin-top: 200px;
   }
+
+.graph-container{
+  margin-top:62px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 32px;
+}
+
+.analytics-container{
+  margin-top:62px;
+}
+
+.notification-container {
+  margin-top: 40px;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-column-gap: 32px;
+}
+
+h2 {
+  color:#CBCBCB !important ;
+
+}
+
+h3{
+  color:#CBCBCB !important ;
+
+}
+h5 {
+  color:#757575 !important ;
+}

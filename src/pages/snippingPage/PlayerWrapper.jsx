@@ -160,6 +160,11 @@ class PlayerWrapper extends Component {
               backgroundColor: $theme.colors.backgroundSecondary,
               marginBottom: "32px"
             })
+          },
+          Title: {
+            style: ({ $theme }) => ({
+              color: $theme.colors.mono300,
+            })
           }
         }}
         title={"Audio Clip " + this.props.index}
@@ -178,7 +183,7 @@ class PlayerWrapper extends Component {
               this.handlePlayPauseClick(0);
             }}
             containerHeight={80}
-            containerWidth={308}
+            containerWidth={261}
             smallVersion={true}
             ref={this.setRef}
           />

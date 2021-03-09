@@ -26,6 +26,41 @@ div {
   padding-top: 48px;
 }
 
+.body-container {
+  box-sizing: border-box;
+  position: relative;
+  width: 600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 992px){
+  .body-container {
+    box-sizing: border-box;
+    position: relative;
+    width: 720px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1200px){
+  .body-container {
+    box-sizing: border-box;
+    position: relative;
+    width: 820px;
+    margin: 0 auto;
+  }
+
+}
+
+
+@media (min-width: 1400px){
+.body-container {
+  box-sizing: border-box;
+  position: relative;
+  width: 940px;
+  margin: 0 auto;
+}
+}
+
 
 
 @media (prefers-reduced-motion: no-preference) {

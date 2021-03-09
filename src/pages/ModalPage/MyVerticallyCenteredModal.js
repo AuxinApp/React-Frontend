@@ -3,8 +3,6 @@ import {
     Modal,
     ModalHeader,
     ModalBody,
-    ModalFooter,
-    ModalButton,
     FocusOnce,
 } from 'baseui/modal';
 
@@ -24,11 +22,6 @@ export default function MyVerticallyCenteredModal(props) {
             <ModalBody $as="div">
                 {props.children}
             </ModalBody>
-            <ModalFooter>
-                <ModalButton onClick={() => props.onClose()}>
-                    Okay
-                </ModalButton>
-            </ModalFooter>
         </Modal>
         </div>
     );

@@ -4,37 +4,13 @@
   outline: 0;
   background: none;
 }
-@media (min-width: 992px){
-  .container {
-    box-sizing: border-box;
-    position: relative;
-    width: 860px;
-    margin: 0 auto;
-  }
+
+
+
+
+.studio-container {
+  text-align: left;
 }
-@media (min-width: 1200px){
-  .container {
-    box-sizing: border-box;
-    position: relative;
-    width: 960px;
-    margin: 0 auto;
-  }
-
-}
-
-
-@media (min-width: 1400px){
-.container {
-  box-sizing: border-box;
-  position: relative;
-  width: 1080px;
-  margin: 0 auto;
-}
-}
-
-
-
-
 .app-title {
   position: absolute;
   color: #ffffff;
