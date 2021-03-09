@@ -9,8 +9,8 @@ import WebAudio from "./webaudio";
 import { ButtonGroup } from "baseui/button-group";
 import { Button, KIND } from "baseui/button";
 import { Link } from "react-router-dom";
-import MyVerticallyCenteredModal from "../ModalPage/MyVerticallyCenteredModal"
-import {H2} from 'baseui/typography'
+import MyVerticallyCenteredModal from "../ModalPage/MyVerticallyCenteredModal";
+import { H2 } from "baseui/typography";
 
 import sound_file from "../../media/courage.mp3";
 
@@ -39,7 +39,7 @@ class SnippingPage extends Component {
     this.handlePreloadedAudioFile(sound_file);
   }
 
-  setModal = (modalState) => {
+  setModal = modalState => {
     this.setState({ modalShow: modalState });
   };
 
@@ -53,7 +53,7 @@ class SnippingPage extends Component {
   handlePreloadedAudioFile = async file_path => {
     let sound_blob = await fetch(sound_file).then(r => r.blob());
     this.handleFileChange(sound_blob);
-  }
+  };
 
   handleFileChange = async file => {
     if (!isAudio(file)) {
@@ -73,7 +73,7 @@ class SnippingPage extends Component {
 
     this.setState({
       // setting this to true so no auto playback after audio is loaded
-      paused: true, 
+      paused: true,
       decoding: false,
       audioBuffer,
       startTime: 0,
@@ -186,7 +186,7 @@ class SnippingPage extends Component {
     const { state } = this;
 
     return (
-      <div className= 'studio-container'>
+      <div className="studio-container">
         {this.state.audioBuffer || this.state.decoding ? (
           <div>
             <H2>Creator Studio</H2>
@@ -290,7 +290,7 @@ class SnippingPage extends Component {
                       BaseButton: {
                         style: ({ $theme }) => ({
                           color: $theme.colors.contentOnColorInverse,
-                          backgroundColor: '#A4FDD2'
+                          backgroundColor: "#A4FDD2"
                         })
                       }
                     }}
@@ -298,8 +298,13 @@ class SnippingPage extends Component {
                   >
                     Publish
                   </Button>
-                  <MyVerticallyCenteredModal onClose={() => this.setModal(false)} isOpen={this.state.modalShow} headerText={'Post your Content'} unstable_ModalBackdropScroll>
-                  {<PostForm/>}
+                  <MyVerticallyCenteredModal
+                    onClose={() => this.setModal(false)}
+                    isOpen={this.state.modalShow}
+                    headerText={"Post your Content"}
+                    unstable_ModalBackdropScroll
+                  >
+                    {<PostForm />}
                   </MyVerticallyCenteredModal>
                 </Link>
               </div>

@@ -3,42 +3,23 @@ import "./Home.css";
 import {
   HeaderNavigation,
   ALIGN,
-  StyledNavigationList,
-  StyledNavigationItem
+  StyledNavigationList
 } from "baseui/header-navigation";
 import { Card, StyledBody, StyledAction, StyledThumbnail } from "baseui/card";
 import podcastLogo from "../../media/nimbleIdeas.jpeg";
-import { Block } from "baseui/block";
-import {ListItem, ListItemLabel} from 'baseui/list';
-import { Plus} from 'baseui/icon'
-import { StyledLink } from "baseui/link";
+import { ListItem, ListItemLabel } from "baseui/list";
+import { Plus } from "baseui/icon";
 import { Button } from "baseui/button";
-import {
-  AreaSeries,
-  VerticalBarSeries,
-  LineMarkSeries,
-  XAxis,
-  YAxis,
-  XYPlot
-} from "react-vis";
+import { AreaSeries, XAxis, YAxis, XYPlot } from "react-vis";
 import { useStyletron } from "baseui";
 
 import { useHistory } from "react-router-dom";
-import { H2, H3, H5, Paragraph1, Paragraph2 } from "baseui/typography";
-
-import {
-  StyledTable,
-  StyledHead,
-  StyledHeadCell,
-  StyledRow,
-  StyledCell
-} from "baseui/table";
+import { H2, H3, H5, Paragraph1 } from "baseui/typography";
 
 const Home = () => {
-
-  const facebookBlue = '#4267B2'
-  const instagramPurple = '#833AB4'
-  const twitterBlue = '#1DA1F2'
+  const facebookBlue = "#4267B2";
+  const instagramPurple = "#833AB4";
+  const twitterBlue = "#1DA1F2";
 
   const GraphCell = ({ children }) => {
     const [css, theme] = useStyletron();
@@ -93,8 +74,7 @@ const Home = () => {
     ],
     opacity: 1,
     fill: "#678ab5",
-    stroke: facebookBlue,
-
+    stroke: facebookBlue
   };
   const seriesPropsIG = {
     data: [
@@ -125,7 +105,7 @@ const Home = () => {
     ],
     opacity: 1,
     fill: "#9769b5",
-    stroke: instagramPurple,
+    stroke: instagramPurple
   };
 
   const seriesPropsTwitter = {
@@ -157,7 +137,7 @@ const Home = () => {
     ],
     opacity: 1,
     fill: "#99d8ff",
-    stroke: twitterBlue,
+    stroke: twitterBlue
   };
 
   const history = useHistory();
@@ -170,51 +150,59 @@ const Home = () => {
   return (
     <div>
       <div>
-        <HeaderNavigation overrides={{
-        Root: {
-          style: ({ $theme }) => ({
-            backgroundColor: $theme.colors.mono800,
-            borderBottomColor: 'transparent'
-          })
-        }
-      }}>
+        <HeaderNavigation
+          overrides={{
+            Root: {
+              style: ({ $theme }) => ({
+                backgroundColor: $theme.colors.mono800,
+                borderBottomColor: "transparent"
+              })
+            }
+          }}
+        >
           <StyledNavigationList $align={ALIGN.left}>
             <H2>Hello Sharan!</H2>
           </StyledNavigationList>
-             </HeaderNavigation>
+        </HeaderNavigation>
       </div>
-      <div className='notification-container'>
-      <Card 
-      title="Take Action!"
-      overrides={{
-        Root: {
-          style: ({ $theme }) => ({
-           borderColor: 'transparent',
-           backgroundColor: $theme.colors.backgroundSecondary,
-           boxShadow: $theme.lighting.shadow600,
-           maxHeight: '254px'
-          })
-        },
-        Title: {
-          style: ({ $theme }) => ({
-            color: $theme.colors.mono300,
-          })
-        }
-      }}>
+      <div className="notification-container">
+        <Card
+          title="Take Action!"
+          overrides={{
+            Root: {
+              style: ({ $theme }) => ({
+                borderColor: "transparent",
+                backgroundColor: $theme.colors.backgroundSecondary,
+                boxShadow: $theme.lighting.shadow600,
+                maxHeight: "254px"
+              })
+            },
+            Title: {
+              style: ({ $theme }) => ({
+                color: $theme.colors.mono300
+              })
+            }
+          }}
+        >
           <StyledThumbnail src={podcastLogo} />
           <StyledBody>
-            <Paragraph1
-            >
-            We saw that you just uploaded your latest Podcast for Nimble Ideas.
-            Let's help you get the word out!
+            <Paragraph1>
+              We saw that you just uploaded your latest Podcast for Nimble
+              Ideas. Let's help you get the word out!
             </Paragraph1>
           </StyledBody>
 
           <StyledAction>
             <Button
               overrides={{
-                BaseButton: { style: ({$theme}) => ({ width: "100%", marginTop: $theme.sizing.scale600, backgroundColor: '#A4FDD2', boxShadow: $theme.lighting.shadow600}), },
-                
+                BaseButton: {
+                  style: ({ $theme }) => ({
+                    width: "100%",
+                    marginTop: $theme.sizing.scale600,
+                    backgroundColor: "#A4FDD2",
+                    boxShadow: $theme.lighting.shadow600
+                  })
+                }
               }}
               onClick={routeChange}
             >
@@ -222,111 +210,121 @@ const Home = () => {
             </Button>
           </StyledAction>
         </Card>
-        <Card 
-      title="Accounts"
-      overrides={{
-        Root: {
-          style: ({ $theme }) => ({
-           borderColor: 'transparent',
-           backgroundColor: $theme.colors.backgroundSecondary,
-           boxShadow: $theme.lighting.shadow600
-          })
-        },
-        Title: {
-          style: ({ $theme }) => ({
-            color: $theme.colors.mono300,
-          })
-        }
-      }}>
+        <Card
+          title="Accounts"
+          overrides={{
+            Root: {
+              style: ({ $theme }) => ({
+                borderColor: "transparent",
+                backgroundColor: $theme.colors.backgroundSecondary,
+                boxShadow: $theme.lighting.shadow600
+              })
+            },
+            Title: {
+              style: ({ $theme }) => ({
+                color: $theme.colors.mono300
+              })
+            }
+          }}
+        >
           <StyledBody>
-          <ListItem
-        endEnhancer={() => (
-          <Button size="compact" kind="secondary" shape="pill">
-            Active
-          </Button>
-        )}
-        overrides={{
-          Root: {
-            style: ({ $theme }) => ({
-              backgroundColor: $theme.colors.mono700
-            })
-          },
-          Content: {
-            style: ({ $theme }) => ({
-              borderBottomColor: $theme.colors.mono500
-            })
-          }
-        }}
-      >
-        <ListItemLabel>Facebook</ListItemLabel>
-      </ListItem>
-      <ListItem
-       endEnhancer={() => (
-        <Button size="compact" kind="secondary" shape="pill">
-          Active
-        </Button>
-      )}
-      overrides={{
-        Root: {
-          style: ({ $theme }) => ({
-            backgroundColor: $theme.colors.mono700,
-          })
-        },
-        Content: {
-          style: ({ $theme }) => ({
-            borderBottomColor: $theme.colors.mono500
-          })
-        }
-      }}
-      >
-        <ListItemLabel >Instagram</ListItemLabel>
-      </ListItem>
-      <ListItem  endEnhancer={() => (
-          <Button size="compact" kind="secondary" shape="pill">
-            Active
-          </Button>
-        )}
-        overrides={{
-          Root: {
-            style: ({ $theme }) => ({
-              backgroundColor: $theme.colors.mono700
-            })
-          },
-          Content: {
-            style: ({ $theme }) => ({
-              borderBottomColor: $theme.colors.mono500
-            })
-          }
-        }}>
-        <ListItemLabel>Twitter</ListItemLabel>
-      </ListItem>
-      <ListItem  endEnhancer={() => (
-          <Button size="compact" kind="secondary" shape="pill">
-            Active
-          </Button>
-        )}
-        overrides={{
-          Root: {
-            style: ({ $theme }) => ({
-              backgroundColor: $theme.colors.mono700
-            })
-          },
-          Content: {
-            style: ({ $theme }) => ({
-              borderBottomColor: $theme.colors.mono500
-            })
-          }
-        }}>
-        <ListItemLabel>Linkedin</ListItemLabel>
-      </ListItem>
-
+            <ListItem
+              endEnhancer={() => (
+                <Button size="compact" kind="secondary" shape="pill">
+                  Active
+                </Button>
+              )}
+              overrides={{
+                Root: {
+                  style: ({ $theme }) => ({
+                    backgroundColor: $theme.colors.mono700
+                  })
+                },
+                Content: {
+                  style: ({ $theme }) => ({
+                    borderBottomColor: $theme.colors.mono500
+                  })
+                }
+              }}
+            >
+              <ListItemLabel>Facebook</ListItemLabel>
+            </ListItem>
+            <ListItem
+              endEnhancer={() => (
+                <Button size="compact" kind="secondary" shape="pill">
+                  Active
+                </Button>
+              )}
+              overrides={{
+                Root: {
+                  style: ({ $theme }) => ({
+                    backgroundColor: $theme.colors.mono700
+                  })
+                },
+                Content: {
+                  style: ({ $theme }) => ({
+                    borderBottomColor: $theme.colors.mono500
+                  })
+                }
+              }}
+            >
+              <ListItemLabel>Instagram</ListItemLabel>
+            </ListItem>
+            <ListItem
+              endEnhancer={() => (
+                <Button size="compact" kind="secondary" shape="pill">
+                  Active
+                </Button>
+              )}
+              overrides={{
+                Root: {
+                  style: ({ $theme }) => ({
+                    backgroundColor: $theme.colors.mono700
+                  })
+                },
+                Content: {
+                  style: ({ $theme }) => ({
+                    borderBottomColor: $theme.colors.mono500
+                  })
+                }
+              }}
+            >
+              <ListItemLabel>Twitter</ListItemLabel>
+            </ListItem>
+            <ListItem
+              endEnhancer={() => (
+                <Button size="compact" kind="secondary" shape="pill">
+                  Active
+                </Button>
+              )}
+              overrides={{
+                Root: {
+                  style: ({ $theme }) => ({
+                    backgroundColor: $theme.colors.mono700
+                  })
+                },
+                Content: {
+                  style: ({ $theme }) => ({
+                    borderBottomColor: $theme.colors.mono500
+                  })
+                }
+              }}
+            >
+              <ListItemLabel>Linkedin</ListItemLabel>
+            </ListItem>
           </StyledBody>
 
           <StyledAction>
             <Button
               overrides={{
-                BaseButton: { style: ({$theme}) => ({ width: "100%", marginTop: $theme.sizing.scale600, backgroundColor: '#A4FDD2', boxShadow: $theme.lighting.shadow600}), },
-                
+                BaseButton: {
+                  style: ({ $theme }) => ({
+                    width: "100%",
+                    marginTop: $theme.sizing.scale600,
+                    backgroundColor: "#A4FDD2",
+                    boxShadow: $theme.lighting.shadow600
+                  })
+                }
               }}
               onClick={routeChange}
               startEnhancer={() => <Plus size={20}></Plus>}
@@ -338,59 +336,62 @@ const Home = () => {
       </div>
 
       <div className="analytics-container">
-        <H3>
-          Engagement Analytics
-        </H3>
+        <H3>Engagement Analytics</H3>
         <div className="graph-container">
-        <Card overrides={{
-        Root: {
-          style: ({ $theme }) => ({
-           borderColor: 'transparent',
-           backgroundColor: $theme.colors.backgroundSecondary,
-           boxShadow: $theme.lighting.shadow600
-          })
-        }
-      }}>
-          <StyledBody>
-             <H5>Facebook</H5>
-             <GraphCell>
-                  <AreaSeries {...seriesPropsFB} />
-                </GraphCell>
-          </StyledBody>
-        </Card>
-        <Card overrides={{
-        Root: {
-          style: ({ $theme }) => ({
-           borderColor: 'transparent',
-           backgroundColor: $theme.colors.backgroundSecondary,
-           boxShadow: $theme.lighting.shadow600
-          })
-        }
-      }}>
-          <StyledBody>
-          <H5>Twitter</H5>
-          <GraphCell>
-                  <AreaSeries {...seriesPropsTwitter} />
-                </GraphCell>
-          </StyledBody>
-        </Card>
-        <Card overrides={{
-        Root: {
-          style: ({ $theme }) => ({
-           borderColor: 'transparent',
-           backgroundColor: $theme.colors.backgroundSecondary,
-           boxShadow: $theme.lighting.shadow600
-          })
-        }
-      }}>
-          <StyledBody>
-          <H5>Instagram</H5>
-          <GraphCell>
-                  <AreaSeries {...seriesPropsIG} />
-                </GraphCell>
-          </StyledBody>
-        </Card>
-      
+          <Card
+            overrides={{
+              Root: {
+                style: ({ $theme }) => ({
+                  borderColor: "transparent",
+                  backgroundColor: $theme.colors.backgroundSecondary,
+                  boxShadow: $theme.lighting.shadow600
+                })
+              }
+            }}
+          >
+            <StyledBody>
+              <H5>Facebook</H5>
+              <GraphCell>
+                <AreaSeries {...seriesPropsFB} />
+              </GraphCell>
+            </StyledBody>
+          </Card>
+          <Card
+            overrides={{
+              Root: {
+                style: ({ $theme }) => ({
+                  borderColor: "transparent",
+                  backgroundColor: $theme.colors.backgroundSecondary,
+                  boxShadow: $theme.lighting.shadow600
+                })
+              }
+            }}
+          >
+            <StyledBody>
+              <H5>Twitter</H5>
+              <GraphCell>
+                <AreaSeries {...seriesPropsTwitter} />
+              </GraphCell>
+            </StyledBody>
+          </Card>
+          <Card
+            overrides={{
+              Root: {
+                style: ({ $theme }) => ({
+                  borderColor: "transparent",
+                  backgroundColor: $theme.colors.backgroundSecondary,
+                  boxShadow: $theme.lighting.shadow600
+                })
+              }
+            }}
+          >
+            <StyledBody>
+              <H5>Instagram</H5>
+              <GraphCell>
+                <AreaSeries {...seriesPropsIG} />
+              </GraphCell>
+            </StyledBody>
+          </Card>
         </div>
       </div>
     </div>
