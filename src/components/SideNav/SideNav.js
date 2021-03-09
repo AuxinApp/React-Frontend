@@ -44,14 +44,18 @@ const SideNav = ({ history, location }) => {
             style: ({ $active, $theme }) => {
               if (!$active)
                 return {
+                  fontSize: '18px',
+                  fontWeight:'500',
                   ":hover": {
                     backgroundColor: $theme.colors.mono800,
                     color: $theme.colors.white,
                     boxShadow: $theme.lighting.shadow400,
-
+                    
                   }
                 };
               return {
+                fontSize: '18px',
+                fontWeight:'500',
                 backgroundColor: $theme.colors.mono700,
                 borderLeftColor: "#85d6af",
                 backgroundImage: "",

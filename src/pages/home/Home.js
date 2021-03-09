@@ -218,7 +218,18 @@ const Home = () => {
           <StyledBody>
             <ListItem
               endEnhancer={() => (
-                <Button size="compact" kind="secondary" shape="pill">
+                <Button
+                  size="compact"
+                  kind="secondary"
+                  shape="pill"
+                  overrides={{
+                    BaseButton: {
+                      style: ({ $theme }) => ({
+                        backgroundColor: "#10462D"
+                      })
+                    }
+                  }}
+                >
                   Active
                 </Button>
               )}
@@ -239,7 +250,18 @@ const Home = () => {
             </ListItem>
             <ListItem
               endEnhancer={() => (
-                <Button size="compact" kind="secondary" shape="pill">
+                <Button
+                  size="compact"
+                  kind="tertiary"
+                  shape="pill"
+                  overrides={{
+                    BaseButton: {
+                      style: ({ $theme }) => ({
+                        backgroundColor: "#10462D"
+                      })
+                    }
+                  }}
+                >
                   Active
                 </Button>
               )}
@@ -260,7 +282,18 @@ const Home = () => {
             </ListItem>
             <ListItem
               endEnhancer={() => (
-                <Button size="compact" kind="secondary" shape="pill">
+                <Button
+                  size="compact"
+                  kind="tertiary"
+                  shape="pill"
+                  overrides={{
+                    BaseButton: {
+                      style: ({ $theme }) => ({
+                        backgroundColor: "#10462D"
+                      })
+                    }
+                  }}
+                >
                   Active
                 </Button>
               )}
@@ -281,7 +314,18 @@ const Home = () => {
             </ListItem>
             <ListItem
               endEnhancer={() => (
-                <Button size="compact" kind="secondary" shape="pill">
+                <Button
+                  size="compact"
+                  kind="tertiary"
+                  shape="pill"
+                  overrides={{
+                    BaseButton: {
+                      style: ({ $theme }) => ({
+                        backgroundColor: "#10462D"
+                      })
+                    }
+                  }}
+                >
                   Active
                 </Button>
               )}

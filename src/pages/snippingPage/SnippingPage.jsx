@@ -7,15 +7,18 @@ import { sliceAudioBuffer } from "./audio-helper";
 import { encode } from "./worker-client";
 import WebAudio from "./webaudio";
 import { ButtonGroup } from "baseui/button-group";
-import { Button, KIND } from "baseui/button";
+import { Button, KIND, SIZE } from "baseui/button";
 import { Link } from "react-router-dom";
 import MyVerticallyCenteredModal from "../ModalPage/MyVerticallyCenteredModal";
-import { H2 } from "baseui/typography";
+import { H2, H3 } from "baseui/typography";
+import { Skeleton } from "baseui/skeleton";
+import { Spinner } from "baseui/spinner";
 
 import sound_file from "../../media/courage.mp3";
 
 import "./SnippingPage.css";
 import PostForm from "./../../components/PostForm/PostForm";
+import { SizeOnlySource } from "webpack-sources";
 
 class SnippingPage extends Component {
   constructor() {
@@ -191,7 +194,29 @@ class SnippingPage extends Component {
           <div>
             <H2>Creator Studio</H2>
             {this.state.decoding ? (
-              <div className="player player-landing">DECODING...</div>
+              <div className="player player-landing">
+                <Skeleton width="100%" height="100%" animation></Skeleton>
+                <div className="loading-container">
+                  <div className="loading-content">
+                    <Spinner
+                      size={96}
+                      overrides={{
+                        ActivePath: {
+                          style: ({}) => ({ fill: "#85d6af" })
+                        }
+                      }}
+                    ></Spinner>
+                    <H3
+                      marginLeft={"32px"}
+                      marginTop={"auto"}
+                      marginBottom={"auto"}
+                    >
+                      {" "}
+                      DECODING...
+                    </H3>
+                  </div>
+                </div>
+              </div>
             ) : (
               <Player
                 audioBuffer={this.state.audioBuffer}
@@ -213,99 +238,102 @@ class SnippingPage extends Component {
             )}
 
             <div className="controllers">
-              <ButtonGroup>
-                <Button
-                  overrides={{
-                    BaseButton: {
-                      style: ({ $theme }) => ({
-                        boxShadow: $theme.lighting.shadow600,
+              {this.state.decoding ? (
+                <Skeleton width="385px" height="48px" animation></Skeleton>
+              ) : (
+                <ButtonGroup>
+                  <Button
+                    overrides={{
+                      BaseButton: {
+                        style: ({ $theme }) => ({
+                          boxShadow: $theme.lighting.shadow600,
 
-                        ":hover": {
-                          transform: "translate3d(0, -2px, 0)",
-                          boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
-                          filter: "brightness(95%)"
-                        }
-                      })
-                    }
-                  }}
-                >
-                  <FilePicker onChange={this.handleFileChange}>
-                    Upload
-                  </FilePicker>
-                </Button>
-                <Button
-                  onClick={() => {
-                    this.handlePlayPauseClick(0);
-                  }}
-                  overrides={{
-                    BaseButton: {
-                      style: ({ $theme }) => ({
-                        boxShadow: $theme.lighting.shadow600,
+                          ":hover": {
+                            transform: "translate3d(0, -2px, 0)",
+                            boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                            filter: "brightness(95%)"
+                          }
+                        })
+                      }
+                    }}
+                  >
+                    <FilePicker onChange={this.handleFileChange}>
+                      Upload
+                    </FilePicker>
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      this.handlePlayPauseClick(0);
+                    }}
+                    overrides={{
+                      BaseButton: {
+                        style: ({ $theme }) => ({
+                          boxShadow: $theme.lighting.shadow600,
 
-                        ":hover": {
-                          transform: "translate3d(0, -2px, 0)",
-                          boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
-                          filter: "brightness(95%)"
-                        }
-                      })
-                    }
-                  }}
-                >
-                  Play/Pause
-                </Button>
-                <Button
-                  overrides={{
-                    BaseButton: {
-                      style: ({ $theme }) => ({
-                        boxShadow: $theme.lighting.shadow600,
+                          ":hover": {
+                            transform: "translate3d(0, -2px, 0)",
+                            boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                            filter: "brightness(95%)"
+                          }
+                        })
+                      }
+                    }}
+                  >
+                    Play/Pause
+                  </Button>
+                  <Button
+                    overrides={{
+                      BaseButton: {
+                        style: ({ $theme }) => ({
+                          boxShadow: $theme.lighting.shadow600,
 
-                        ":hover": {
-                          transform: "translate3d(0, -2px, 0)",
-                          boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
-                          filter: "brightness(95%)"
-                        }
-                      })
-                    }
-                  }}
-                  onClick={this.handleReplayClick}
-                >
-                  Replay
-                </Button>
-                <Button
-                  overrides={{
-                    BaseButton: {
-                      style: ({ $theme }) => ({
-                        boxShadow: $theme.lighting.shadow600,
+                          ":hover": {
+                            transform: "translate3d(0, -2px, 0)",
+                            boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                            filter: "brightness(95%)"
+                          }
+                        })
+                      }
+                    }}
+                    onClick={this.handleReplayClick}
+                  >
+                    Replay
+                  </Button>
+                  <Button
+                    overrides={{
+                      BaseButton: {
+                        style: ({ $theme }) => ({
+                          boxShadow: $theme.lighting.shadow600,
 
-                        ":hover": {
-                          transform: "translate3d(0, -2px, 0)",
-                          boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
-                          filter: "brightness(95%)"
-                        }
-                      })
-                    }
-                  }}
-                >
-                  <div className="dropdown list-wrap">
-                    Download
-                    {!this.state.processing && (
-                      <ul className="list">
-                        <li>
-                          <a onClick={this.handleEncode} data-type="wav">
-                            Wav
-                          </a>
-                        </li>
-                        <li>
-                          <a onClick={this.handleEncode} data-type="mp3">
-                            MP3
-                          </a>
-                        </li>
-                      </ul>
-                    )}
-                  </div>
-                </Button>
-              </ButtonGroup>
-
+                          ":hover": {
+                            transform: "translate3d(0, -2px, 0)",
+                            boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                            filter: "brightness(95%)"
+                          }
+                        })
+                      }
+                    }}
+                  >
+                    <div className="dropdown list-wrap">
+                      Download
+                      {!this.state.processing && (
+                        <ul className="list">
+                          <li>
+                            <a onClick={this.handleEncode} data-type="wav">
+                              Wav
+                            </a>
+                          </li>
+                          <li>
+                            <a onClick={this.handleEncode} data-type="mp3">
+                              MP3
+                            </a>
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+                  </Button>
+                </ButtonGroup>
+              )}
               {isFinite(this.state.endTime) && (
                 <span className="seconds">
                   Select{" "}
@@ -329,60 +357,70 @@ class SnippingPage extends Component {
               )}
             </div>
             <div className="controllers">
-              <Button
-                kind={KIND.secondary}
-                overrides={{
-                  BaseButton: {
-                    style: ({ $theme }) => ({
-                      boxShadow: $theme.lighting.shadow600,
+              {this.state.decoding ? (
+                <Skeleton width="98px" height="48px" animation></Skeleton>
+              ) : (
+                <Button
+                  kind={KIND.secondary}
+                  overrides={{
+                    BaseButton: {
+                      style: ({ $theme }) => ({
+                        boxShadow: $theme.lighting.shadow600,
 
-                      ":hover": {
-                        transform: "translate3d(0, -2px, 0)",
-                        boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
-                        filter: "brightness(95%)"
-                      }
-                    })
-                  }
-                }}
-                onClick={this.handleSaveClip}
-              >
-                Save clip
-              </Button>
+                        ":hover": {
+                          transform: "translate3d(0, -2px, 0)",
+                          boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                          filter: "brightness(95%)"
+                        }
+                      })
+                    }
+                  }}
+                  onClick={this.handleSaveClip}
+                >
+                  Save clip
+                </Button>
+              )}
               <div className="lastButton">
-                <Link classNameto="/post">
-                  <Button
-                    kind={KIND.primary}
-                    overrides={{
-                      BaseButton: {
-                        style: ({ $theme }) => ({
-                          color: $theme.colors.contentOnColorInverse,
-                          backgroundColor: "#85d6af",
-                          boxShadow: $theme.lighting.shadow600,
-
-                          ":hover": {
-                            transform: "translate3d(0, -2px, 0)",
-                            boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                {this.state.decoding ? (
+                  <Skeleton width="86px" height="48px" animation></Skeleton>
+                ) : (
+                  <Link classNameto="/post">
+                    <Button
+                      kind={KIND.primary}
+                      overrides={{
+                        BaseButton: {
+                          style: ({ $theme }) => ({
+                            color: $theme.colors.contentOnColorInverse,
                             backgroundColor: "#85d6af",
-                            filter: "brightness(95%)"
-                          }
-                        })
-                      }
-                    }}
-                    onClick={() => this.setModal(true)}
-                  >
-                    Publish
-                  </Button>
-                  <MyVerticallyCenteredModal
-                    onClose={() => this.setModal(false)}
-                    isOpen={this.state.modalShow}
-                    headerText={"Post your Content"}
-                    unstable_ModalBackdropScroll
-                  >
-                    {<PostForm />}
-                  </MyVerticallyCenteredModal>
-                </Link>
+                            boxShadow: $theme.lighting.shadow600,
+
+                            ":hover": {
+                              transform: "translate3d(0, -2px, 0)",
+                              boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                              backgroundColor: "#85d6af",
+                              filter: "brightness(95%)"
+                            }
+                          })
+                        }
+                      }}
+                      onClick={() => this.setModal(true)}
+                    >
+                      Publish
+                    </Button>
+
+                    <MyVerticallyCenteredModal
+                      onClose={() => this.setModal(false)}
+                      isOpen={this.state.modalShow}
+                      headerText={"Post your Content"}
+                      unstable_ModalBackdropScroll
+                    >
+                      {<PostForm />}
+                    </MyVerticallyCenteredModal>
+                  </Link>
+                )}
               </div>
             </div>
+
             <div className="savedContainer">
               {this.state.savedClips &&
                 this.state.savedClips.map((item, index) => (
