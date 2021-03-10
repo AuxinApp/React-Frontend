@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import getPeaks from './peaks'
 import classnames from 'classnames'
 
-const dpr = window.devicePixelRatio || 1
+const dpr = 1
 
 export default class Waver extends PureComponent {
   /** @type {CanvasRenderingContext2D} */
@@ -11,7 +11,7 @@ export default class Waver extends PureComponent {
 
   constructor (props) {
     super(props)
-
+    this.canvasRef = React.createRef()
     this.state = {
       peaks: null,
     }
@@ -22,7 +22,7 @@ export default class Waver extends PureComponent {
   }
 
   componentDidMount () {
-    const canvas = this.refs.canvas
+    const canvas = this.canvasRef.current
     const ctx = canvas.getContext('2d')
     this.ctx = ctx
     this.repaint()
@@ -39,10 +39,7 @@ export default class Waver extends PureComponent {
   }
 
   setPeaks (channelData) {
-    console.time('peaks')
     const peaks = getPeaks(this.props.width * dpr, channelData)
-    console.timeEnd('peaks')
-
     this.setState({
       peaks,
     })
@@ -52,8 +49,9 @@ export default class Waver extends PureComponent {
     const { ctx } = this
     const peaks = this.state.peaks
     const count = peaks.length
-    const height = this.props.height
+    const height = this.props.height / 2
     const centerY = this.props.height / 2 * dpr
+
 
     ctx.lineWidth = 1
     ctx.clearRect(0, 0, this.props.width * dpr, this.props.height * dpr)
@@ -63,23 +61,25 @@ export default class Waver extends PureComponent {
       const x = i - 0.5
 
       ctx.beginPath()
-      ctx.strokeStyle = this.props.color1
+      ctx.strokeStyle = this.props.color1;
       ctx.moveTo(x, ((min + 1) * height) + 0.5)
       ctx.lineTo(x, centerY)
       ctx.stroke()
-
+      
       ctx.beginPath()
-      ctx.strokeStyle = this.props.color2
+      ctx.strokeStyle = this.props.color2;
       ctx.moveTo(x, centerY)
       ctx.lineTo(x, ((max + 1) * height) + 0.5)
-      ctx.stroke()
+      ctx.stroke() 
+  
     }
   }
 
   render () {
+
     return (
       <canvas
-        ref='canvas'
+        ref={this.canvasRef}
         className={classnames('wave-canvas', this.props.className)}
         style={{
           width: this.props.width + 'px',

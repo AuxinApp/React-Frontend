@@ -31,7 +31,6 @@ export default class Player extends PureComponent {
 
   initWebAudio() {
 
-    console.log('hello')
     this.clean();
 
     const { audioBuffer } = this.props;
@@ -72,10 +71,6 @@ export default class Player extends PureComponent {
     }
   };
 
-  playAudio = () => {
-    console.log(this.props.paused)
-    //this.props.paused = true;
-  }
 
   onAudioProcessEnd = () => {
     const { startTime, currentTime, paused } = this.props;

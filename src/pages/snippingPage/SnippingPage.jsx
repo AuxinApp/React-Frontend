@@ -173,7 +173,7 @@ class SnippingPage extends Component {
       .then(url => {
         download(url, rename(this.state.file.name, type));
       })
-      .catch(e => console.error(e))
+      .catch(e => (console.error(e)))
       .then(() => {
         this.setState({
           processing: false
@@ -384,7 +384,7 @@ class SnippingPage extends Component {
                 {this.state.decoding ? (
                   <Skeleton width="86px" height="48px" animation></Skeleton>
                 ) : (
-                  <Link classNameto="/post">
+                  <div>
                     <Button
                       kind={KIND.primary}
                       overrides={{
@@ -416,7 +416,7 @@ class SnippingPage extends Component {
                     >
                       {<PostForm />}
                     </MyVerticallyCenteredModal>
-                  </Link>
+                  </div>
                 )}
               </div>
             </div>

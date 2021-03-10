@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent} from 'react'
 import PropTypes from 'prop-types'
 
 export default class FilePicker extends PureComponent {
@@ -7,10 +7,11 @@ export default class FilePicker extends PureComponent {
     this.state = {
       key: 0,
     }
+    this.fileRef = React.createRef();
   }
 
   handleChange = () => {
-    this.props.onChange(this.refs.file.files[0])
+    this.props.onChange(this.fileRef.current.files[0])
     this.setState({
       key: this.state.key + 1,
     })
@@ -20,7 +21,7 @@ export default class FilePicker extends PureComponent {
     return (
       <label className='file'>
         { this.props.children }
-        <input type='file' key={this.state.key} ref='file' onChange={this.handleChange} />
+        <input type='file' key={this.state.key} ref={this.fileRef} onChange={this.handleChange} />
       </label>
     )
   }
@@ -31,6 +32,6 @@ export default class FilePicker extends PureComponent {
 
   static propTypes = {
     onChange: PropTypes.func,
-    children: PropTypes.element,
+    children: PropTypes.node,
   }
 }
