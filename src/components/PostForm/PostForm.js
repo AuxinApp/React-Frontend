@@ -388,6 +388,7 @@ function PostForm() {
           </div>
         </div>
       </div>
+      <div className='button-container'>
       <Button
         onClick={() => setShowNotification(true)}
         overrides={{
@@ -431,6 +432,7 @@ function PostForm() {
       >
         Post Now
       </Button>
+    </div>
     </div>
   );
 }
