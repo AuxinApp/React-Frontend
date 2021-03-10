@@ -2,7 +2,7 @@ import * as React from "react";
 import { Navigation } from "baseui/side-navigation";
 import { withRouter } from "react-router";
 import "./SideNav.css";
-import auxinLogo from "../../media/AuxinLogoGrey.png";
+import auxinLogo from "../../media/AuxinLogoDarkTheme.png";
 import { Link } from "react-router-dom";
 
 const SideNav = ({ history, location }) => {
