@@ -36,10 +36,8 @@ function PostForm() {
   const [date, setDate] = useState(DATE);
 
   const handleUpload = () => {
-    console.log("here");
-    console.log(selectvalue);
+   
     if (selectvalue.length > 0 && !loadingClip) {
-      console.log("here");
       setTimeout(() => {
         setLoadingClip(true);
       }, 2000);
