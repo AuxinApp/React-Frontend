@@ -80,7 +80,7 @@ function PostForm() {
               <br />
               {selectvalue[0].label}
               <br></br>
-              Duration: 2m 30 secs
+              Duration: 25 secs
             </Paragraph2>
           </StyledBody>
           <StyledAction>
@@ -407,7 +407,29 @@ function PostForm() {
           }
         }}
       >
-        Post Content
+        Schedule Post
+      </Button>
+      <Button
+        onClick={() => setShowNotification(true)}
+        overrides={{
+          BaseButton: {
+            style: ({ $theme }) => ({
+              marginTop: $theme.sizing.scale800,
+              marginBottom: $theme.sizing.scale600,
+              marginLeft: $theme.sizing.scale300,
+              backgroundColor: "#85d6af",
+              boxShadow: $theme.lighting.shadow600,
+              ":hover": {
+                transform: "translate3d(0, -2px, 0)",
+                boxShadow: "0 8px 24px hsla(0, 0%, 0%, .65)",
+                backgroundColor: "#85d6af",
+                filter: "brightness(95%)"
+              }
+            })
+          }
+        }}
+      >
+        Post Now
       </Button>
     </div>
   );
