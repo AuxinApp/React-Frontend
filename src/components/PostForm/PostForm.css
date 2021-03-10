@@ -30,3 +30,8 @@
 .date-item {
     margin-right: 24px;
 }
+
+.button-container {
+    display: flex;
+    justify-content:space-between;
+}
