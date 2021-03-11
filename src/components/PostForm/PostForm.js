@@ -78,7 +78,7 @@ function PostForm() {
               <br />
               {selectvalue[0].label}
               <br></br>
-              Duration: 25 secs
+              Duration: 59 secs
             </Paragraph2>
           </StyledBody>
           <StyledAction>
